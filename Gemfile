@@ -43,3 +43,9 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'rubocop', require: false
+  gem 'rspec-rails'
+  gem "codeclimate-test-reporter"
+end
+
