@@ -7,14 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if user_signed_in? && current_user.admin? %>
+  <nav>
+    <ul>
+      <li><%= link_to 'Participants', participants_path %></li>
+      <li><%= link_to 'Users', users_admin_index_path %></li>
+    </ul>
+  </nav>
+<% end %>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<% if !user_signed_in? %>
-	<p>
-		<%= link_to "Sign Up", new_user_registration_path %>
-		<%= link_to "Sing In", new_user_session_path %>
-	</p>
+<% if user_signed_in? %>
+  <p><%= current_user.email %></p>
+  <p><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></p>
 <% end %>
 
 <%= yield %>
