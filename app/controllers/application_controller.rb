@@ -4,7 +4,7 @@
     protect_from_forgery with: :exception
 
     def after_sign_in_path_for(resource)
-      sign_in_url = new_user_session_url
+      sign_in_url = new_admin_user_session_url
       if request.referer == sign_in_url
         super
       else
@@ -13,7 +13,7 @@
     end
 
     def after_sign_out_path_for(_resource)
-      participants_path
+      root_path
     end
 
     before_action :configure_permitted_parameters, if: :devise_controller?
