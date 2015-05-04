@@ -6,6 +6,5 @@ Rails.application.routes.draw do
     resources :participants
     get '/', to: 'participants#index'
   end
-  # get '/admin', to: 'participants#index'
   root to: 'home#index'
 end

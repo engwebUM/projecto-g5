@@ -7,23 +7,41 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if user_signed_in? && current_user.admin? %>
-  <nav>
-    <ul>
-      <li><%= link_to 'Participants', participants_path %></li>
-      <li><%= link_to 'Users', users_admin_index_path %></li>
-    </ul>
-  </nav>
-<% end %>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+  <header>
+    <% if user_signed_in? %>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-main-menu">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">RubyConfLogo</a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbar-collapse-main-menu">
+            <ul class="nav navbar-nav">
+              <li><%= link_to 'Participants', participants_path %></li>
+              <% if current_user.admin? %>
+                <li><%= link_to 'Users', users_admin_index_path %></li>
+              <% end %>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+              <li><label><%= current_user.email %></label></li>
+              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </header>
 
-<% if user_signed_in? %>
-  <p><%= current_user.email %></p>
-  <p><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></p>
-<% end %>
-
-<%= yield %>
+  <section class="container">
+    <%= yield %>
+  </section>
 
 </body>
 </html>
