@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429232948) do
+ActiveRecord::Schema.define(version: 20150507214924) do
 
   create_table "participants", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
+    t.string   "name", default: "", null: false
+    t.string   "email", default: "", null: false
     t.boolean  "checkin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "participants", ["email"], name: "index_participants_on_email", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

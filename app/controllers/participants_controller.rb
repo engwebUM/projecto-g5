@@ -5,7 +5,7 @@ class ParticipantsController < ApplicationController
     if @participant.save
       redirect_to root_path, notice: 'Your register was successfully created.'
     else
-      redirect_to root_path
+      redirect_to root_path, notice: 'Error in your registration'
     end
   end
 
