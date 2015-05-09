@@ -1,3 +1,7 @@
-<div>Hello World</div>
+<%= javascript_include_tag 'participants/validate-form' %>
 
 <%= render 'admin/participants/form', participant: @participant, url: participants_path %>
+
+<script type='text/javascript'>
+	validateForm($("#new_participant"));
+</script>

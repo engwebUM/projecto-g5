@@ -1,5 +1,11 @@
+<%= javascript_include_tag 'users/validate-form' %>
+
 <h1>New User</h1>
 
 <%= render 'form', user: @user, url: admin_users_path %>
 
 <%= link_to 'Cancel', admin_users_path %>
+
+<script type='text/javascript'>
+	validateForm($("#new_user"));
+</script>
