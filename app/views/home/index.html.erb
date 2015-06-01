@@ -1,7 +1,48 @@
-<%= javascript_include_tag 'participants/validate-form' %>
+<section class="Homepage">
+	<div class="inner-cover">
+	  <%= image_tag("logo.png", :alt => "logo") %>
+	  <h1 class="cover-heading"></h1>
+	  <p class="lead">The most precious Ruby Conference in the world!</p>
+	 </div>
 
-<%= render 'admin/participants/form', participant: @participant, url: participants_path %>
+	<%= javascript_include_tag 'participants/validate-form' %>
 
-<script type='text/javascript'>
-	validateForm($("#new_participant"));
-</script>
+	<%= render 'admin/participants/form', participant: @participant, url: participants_path %>
+
+	<script type='text/javascript'>
+	  validateForm($("#new_participant"));
+	</script>
+
+	<div class="type-tickets">
+		<div class="early-bird">
+		  	<div class="content">
+			  <h2>Early Bird</h2>
+			  <h3>150€</h3>
+			  <p>Ends on June 10th (Limited to 100 Tickets)</p>
+			  <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Buy Ticket</a></p>-->
+		  	</div>
+		</div>
+
+		<div class="regular-ticket">
+			<div class="content">
+			  <h2>Regular Ticket</h2>
+			  <h3>200€</h3>
+			  <p>Starts on June 11th</p>
+			</div>		  
+		</div>
+
+		<div class="late-ticket">
+		  
+		  	<div class="content">
+			  <h2>Late Ticket</h2>
+			  <h3>250€</h3>
+			  <p>Starts on August 13th 11th</p>
+			</div>  
+		</div>
+	</div>	
+	<div class="mastfoot">
+		<p>14-15 September</p>
+	    <p>Braga, Portugal</p>
+	</div>
+
+</section>

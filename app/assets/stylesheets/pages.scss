@@ -1,0 +1,134 @@
+body{
+	background-color: #E8E8E8;
+}
+
+.inner-cover, .mastfoot{
+	text-align: center;
+}
+
+.field{
+	margin-top: 15px;
+	text-align: center;	
+}
+
+.actions{
+	margin-top: 5px;
+	text-align: center;	
+}
+
+.Homepage-tickets{
+	margin-top: 20px;
+}
+
+.type-tickets .early-bird{
+	width: 350px;
+	margin-left: 10px;	
+}
+
+.early-bird .content, .regular-ticket .content, .late-ticket .content {
+	text-align: center;	
+}
+
+.regular-ticket, .late-ticket{
+	width: 350px;
+	margin-left: 10px;	
+}
+
+.early-bird, .regular-ticket, .late-ticket{
+	display: inline-block;
+	border-style: double;
+	border-width: 5px;
+	border-top-color: #999999;
+	margin-top: 20px;
+}
+
+.inner{
+	margin-top: 2px;
+}
+
+.Login{
+	text-align: center;
+}
+
+.Login .logo{
+	width: 50%;
+}
+
+.List-title{
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 40px;
+}
+
+.Login-email .email, .Login-password .password, .Login-button{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.Login-title { 
+	border:0 solid #fff; 
+	border-bottom-width:1px;
+	padding-bottom:10px;
+	text-align: center;
+}
+
+.navbar-brand, .nav navbar-nav pull-right {
+	display: flex;
+    align-items: center;
+}
+
+.icon-logo{
+	width: 40px;
+	height: 40px;
+	font-size: 18px;
+}
+
+.forgotPassword{
+	margin-top: 10px;
+}
+
+.Participant{
+	text-align: center;
+}
+
+.Participant-name, .Participant-email, .Participant-checkin, .Participant-button{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.checkinName, .checkin{
+	margin-top: 10px;
+	margin-right: 15px;
+}  
+
+
+.newParticipantTitle{
+	text-align:	center;
+	margin-botton: 40px;
+	border:0 solid #fff; 
+	border-bottom-width:1px;
+	padding-bottom:10px;
+}
+
+.ShowParticipant-title{
+	text-align: center;
+	margin-botton: 40px;
+	border:0 solid #fff; 
+	border-bottom-width:1px;
+	padding-bottom:10px;
+}
+
+.ShowParticipant p, .ShowParticipant-edit, .ShowParticipant-back{
+	margin-top: 10px;
+	margin-left: 5px;
+	margin-bottom: 10px;
+}
+
+.editingParticipant-title{
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.EditingParticipant-back, .EditingParticipant-show{
+	margin-top: 50px;
+}

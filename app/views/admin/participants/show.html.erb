@@ -1,19 +1,21 @@
 <!-- <p id="notice"><%= notice %></p> -->
+<section class="ShowParticipant">
+	<h3 class="ShowParticipant-title">Participant</h3>
+	<p class="ShowParticipant-name">
+	  <strong>Name:</strong>
+	  <%= @participant.name %>
+	</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @participant.name %>
-</p>
+	<p class="ShowParticipant-email">
+	  <strong>Email:</strong>
+	  <%= @participant.email %>
+	</p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @participant.email %>
-</p>
+	<p class="ShowParticipant-checkin">
+	  <strong>Checkin:</strong>
+	  <%= @participant.checkin %>
+	</p>
 
-<p>
-  <strong>Checkin:</strong>
-  <%= @participant.checkin %>
-</p>
-
-<%= link_to 'Edit', edit_admin_participant_path(@participant) %> |
-<%= link_to 'Back', admin_participants_path %>
+	<%= link_to 'Edit', edit_admin_participant_path(@participant), class: 'ShowParticipant-edit'%> |
+	<%= link_to 'Back', admin_participants_path, class: 'ShowParticipant-back' %>
+</section>
