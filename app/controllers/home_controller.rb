@@ -4,5 +4,5 @@ class HomeController < ApplicationController
   end
 
   def tickets
-  end	
+  end
 end
