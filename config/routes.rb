@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   resources :participants, only: [:create]
   root to: 'home#index'
+
 end
