@@ -1,8 +1,7 @@
 <section class="Homepage">
-	<div class="inner-cover">
+	<div class="Homepage-logo">
 	  <%= image_tag("logo.png", :alt => "logo") %>
-	  <h1 class="cover-heading"></h1>
-	  <p class="lead">The most precious Ruby Conference in the world!</p>
+	  <p class="Homepage-slogan">The most precious Ruby Conference in the world!</p>
 	 </div>
 
 	<%= javascript_include_tag 'participants/validate-form' %>
@@ -13,34 +12,34 @@
 	  validateForm($("#new_participant"));
 	</script>
 
-	<div class="type-tickets">
-		<div class="early-bird">
-		  	<div class="content">
-			  <h2>Early Bird</h2>
-			  <h3>150€</h3>
-			  <p>Ends on June 10th (Limited to 100 Tickets)</p>
-			  <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Buy Ticket</a></p>-->
-		  	</div>
-		</div>
+	<div class="Homepage-plans">
+		<div class="container">
+			<div class="col-md-4 text-center">
+			  	<div class="panel panel-success panel-pricing panel-early">
+			  		<div class="panel-heading"><h3>Early Bird</h3></div>
+				  	<div class="panel-body text-center"><p><strong>150€</strong></p></div>
+				  	<div class="list-group-item"><p>Ends on June 10th (Limited to 100 Tickets)</p></div>
+			  	</div>
+			</div>
 
-		<div class="regular-ticket">
-			<div class="content">
-			  <h2>Regular Ticket</h2>
-			  <h3>200€</h3>
-			  <p>Starts on June 11th</p>
-			</div>		  
-		</div>
-
-		<div class="late-ticket">
-		  
-		  	<div class="content">
-			  <h2>Late Ticket</h2>
-			  <h3>250€</h3>
-			  <p>Starts on August 13th 11th</p>
-			</div>  
-		</div>
+			<div class="col-md-4 text-center">
+			  	<div class="panel panel-success panel-pricing panel-regular">
+			  		<div class="panel-heading"><h3>Regular Ticket</h3></div>
+				  	<div class="panel-body text-center"><p><strong>200€</strong></p></div>
+				  	<div class="list-group-item"><p>Starts on June 11th</p></div>
+			  	</div>
+			</div>
+			
+			<div class="col-md-4 text-center">
+			  	<div class="panel panel-success panel-pricing panel-late">
+			  		<div class="panel-heading"><h3>Late Ticket</h3></div>
+				  	<div class="panel-body text-center"><p><strong>250€</strong></p></div>
+				  	<div class="list-group-item"><p>Starts on August 13th</p></div>
+			  	</div>
+			</div>
+		</div>	
 	</div>	
-	<div class="mastfoot">
+	<div class="Homepage-footer">
 		<p>14-15 September</p>
 	    <p>Braga, Portugal</p>
 	</div>
