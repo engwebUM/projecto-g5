@@ -1,5 +1,5 @@
 <section class="Participant">
-  <%= form_for(participant, url: url) do |f| %>
+  <%= form_for(participant, url: url, :html => {:class => "form-inline"}) do |f| %>
     <% if participant.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(participant.errors.count, "error") %> prohibited this participant from being saved:</h2>
@@ -11,22 +11,20 @@
       </div>
     <% end %>
 
-    <div class="Participant-name">
-      <%= f.label :name %><br>
-      <%= f.text_field :name %>
+    <div class="form-group">
+      <%= f.label :name, class: "sr-only" %>
+      <%= f.text_field :name, class: "form-control", placeholder: "Enter name" %>
     </div>
-    <div class="Participan-email">
-      <%= f.label :email %><br>
-      <%= f.text_field :email %>
+    <div class="form-group">
+      <%= f.label :email, class: "sr-only" %>
+      <%= f.text_field :email, class: "form-control", placeholder: "Enter email" %>
     </div>
     <% if admin_user_signed_in? %>
-      <div class="Participant-ckeckin">
-        <%= f.label :checkin, class: 'checkinName' %>
+      <div class="checkbox">
+        <%= f.label :checkin, Participant::CHECK_IN_NAME, class: 'checkinName' %>
         <%= f.check_box :checkin, class: 'checkin' %>
       </div>
     <% end %>
-    <div class="Participant-button">
-      <%= f.submit "Create Participant", class: 'btn btn-primary'%>
-    </div>
+    <%= f.submit "Create Participant", class: 'btn btn-success'%>
   <% end %>
 </section>

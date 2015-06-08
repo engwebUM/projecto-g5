@@ -1,3 +1,11 @@
 // Place all the styles related to the Participant controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.Participant .form-inline .form-control{
+	display: block;
+}
+
+.Participant .form-group{
+	vertical-align: top;
+}
