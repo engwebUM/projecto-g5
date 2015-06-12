@@ -7,7 +7,7 @@
 
 	<%= javascript_include_tag 'participants/validate-form' %>
 
-	<%= render 'admin/participants/form', participant: @participant, url: participants_path %>
+	<%= render 'admin/participants/form', participant: @participant, url: participants_path, name_btn_submit: "Register" %>
 
 	<script type='text/javascript'>
 	  validateForm($("#new_participant"));
