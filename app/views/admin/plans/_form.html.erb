@@ -1,0 +1,53 @@
+<section class="Plan">
+  <%= form_for(plan, url: url, :html => {:class => "form-horizontal form-plan"}) do |f| %>
+    <% if plan.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+        <ul>
+        <% plan.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :name, class: "sr-only" %>
+      <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description, class: "sr-only" %>
+      <%= f.text_field :description, class: "form-control", placeholder: "Description" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :price, class: "sr-only" %>
+      <%= f.number_field :price, class: "form-control", placeholder: "Price", min: 0 %>
+    </div>
+    <div class="form-group">
+      <%= f.label :discount, class: "sr-only" %>
+      <%= f.number_field :discount, class: "form-control", placeholder: "Discount", min: 0 %>
+    </div>
+    <div class="form-group">
+      <%= f.label :start_time, class: "sr-only" %>
+      <%= f.text_field :start_time, class: "form-control", placeholder: "Start Time" %>
+    </div>
+    <%= f.submit name_btn_submit, class: 'btn btn-success'%>
+  <% end %>
+</section>
+<script type="text/javascript">
+  $(function() {
+    $("#plan_start_time").datepicker({ 
+      dateFormat: 'dd/mm/yy'
+    });
+    $("#plan_start_time").datepicker("setDate", this.val());
+    $("#plan_start_time").datepicker("option", "showAnim", "drop");
+  });
+  $(function() {
+    $(".form-plan").validate({
+      rules: {
+        "plan[name]": {required: true},
+        "plan[price]": {required: true},
+        "plan[start_time]": {required: true, date: true}
+      }
+    });
+  });
+</script>

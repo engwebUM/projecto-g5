@@ -25,6 +25,7 @@
               <li><%= link_to 'Participants', admin_participants_path %></li>
               <% if current_admin_user.admin? %>
                 <li><%= link_to 'Users', admin_users_path %></li>
+                <li><%= link_to 'Plans', admin_plans_path %></li>
               <% end %>
             </ul>
             <ul class="nav navbar-nav pull-right">

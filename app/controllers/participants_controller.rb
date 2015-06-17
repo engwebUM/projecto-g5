@@ -12,6 +12,6 @@ class ParticipantsController < ApplicationController
   private
 
   def participant_params
-    params.require(:participant).permit(:name, :email, :checkin)
+    params.require(:participant).permit(:name, :email, :checkin, :kit, :twitter, :github, :company, :paid, :credentials)
   end
 end
