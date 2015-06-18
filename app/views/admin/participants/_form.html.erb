@@ -11,21 +11,21 @@
       </div>
     <% end %>
 
-    <div class="Participant-name">
+    <div class="margin-top-bottom">
       <%= f.label :name %><br>
       <%= f.text_field :name %>
     </div>
-    <div class="Participan-email">
+    <div class="margin-top-bottom">
       <%= f.label :email %><br>
       <%= f.text_field :email %>
     </div>
     <% if admin_user_signed_in? %>
-      <div class="Participant-ckeckin">
-        <%= f.label :checkin, class: 'checkinName' %>
-        <%= f.check_box :checkin, class: 'checkin' %>
+      <div class="margin-top-bottom">
+        <%= f.label :checkin, class: 'margin-top-right' %>
+        <%= f.check_box :checkin, class: 'margin-top-right' %>
       </div>
     <% end %>
-    <div class="Participant-button">
+    <div class="margin-top-bottom">
       <%= f.submit "Create Participant", class: 'btn btn-primary'%>
     </div>
   <% end %>

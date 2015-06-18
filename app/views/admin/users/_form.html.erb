@@ -10,12 +10,12 @@
       </div>
     <% end %>
 
-    <div class="User-name">
+    <div class="margin-top-bottom">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true %>
     </div>
 
-    <div class="User-password">
+    <div class="margin-top-bottom">
       <%= f.label :password %>
       <% if @validatable %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -23,11 +23,11 @@
       <%= f.password_field :password, autocomplete: "off" %>
     </div>
 
-    <div class="User-confirmation">
+    <div class="margin-top-bottom">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
-    <div class="User-buttom">
+    <div class="margin-top-bottom">
       <%= f.submit "Create User", class: 'btn btn-primary' %>
     </div>
   <% end %>

@@ -8,11 +8,11 @@
       <h4 class="Login-title">Welcome back.</h4>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="Login-email">
+        <div class="margin-top-bottom">
           <%= f.email_field :email, autofocus: true, placeholder: "Email", class:" form-control input-sm chat-input email" %>
         </div>
 
-        <div class="Login-password">
+        <div class="margin-top-bottom">
           <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control input-sm chat-input password"  %>
         </div>
 
@@ -23,7 +23,7 @@
           </div>
         <% end -%>
 
-        <div class="Login-button">
+        <div class="margin-top-bottom">
           <%= f.submit "Log in", class: 'btn btn-primary' %>
         </div>
       <% end %>
