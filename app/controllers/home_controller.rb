@@ -11,6 +11,9 @@ class HomeController < ApplicationController
     		plan.active = true
     		check_condition = false
     	end
+      if plan.start_time < Date.today
+        plan.finished = true
+      end
     end
   end
 

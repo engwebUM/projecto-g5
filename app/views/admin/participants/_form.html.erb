@@ -1,6 +1,6 @@
 <%= javascript_include_tag 'participants/validate-form' %>
 <section class="Participant">
-  <%= form_for(participant, url: url, :html => {:class => "form-inline"}) do |f| %>
+  <%= form_for(participant, url: url, :html => {:class => "form-horizontal"}) do |f| %>
     <% if participant.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(participant.errors.count, "error") %> prohibited this participant from being saved:</h2>
@@ -23,7 +23,8 @@
       <%= f.label :company, class: "sr-only" %>
       <%= f.text_field :company, class: "form-control", placeholder: "Company" %>
     </div>
-    <h3>Social Links</h3>
+  
+    <h4>Social Links</h4>
     <div class="form-group">
       <%= f.label :twitter, class: "sr-only" %>
       <%= f.text_field :twitter, class: "form-control", placeholder: "Twitter", url: true %>
@@ -32,22 +33,23 @@
       <%= f.label :github, class: "sr-only" %>
       <%= f.text_field :github, class: "form-control", placeholder: "Github", url: true %>
     </div>
+
     <% if admin_user_signed_in? %>
-      <div class="checkbox">
-        <%= f.label :kit %>
-        <%= f.check_box :kit, class: 'checkin' %>
-      </div>
-      <div class="checkbox">
-        <%= f.label :paid %>
-        <%= f.check_box :paid, class: 'checkin' %>
-      </div>
-      <div class="checkbox">
-        <%= f.label :credentials %>
-        <%= f.check_box :credentials, class: 'checkin' %>
-      </div>
-      <div class="checkbox">
-        <%= f.label :checkin, Participant::CHECK_IN_NAME, class: 'checkinName' %>
-        <%= f.check_box :checkin, class: 'checkin' %>
+      <div class="col-md-12">
+        <h4>Admin</h4>
+        <div>
+          <%= f.label :kit %>
+          <%= f.check_box :kit, class: 'margin-right-small' %>
+        
+          <%= f.label :paid %>
+          <%= f.check_box :paid, class: 'margin-right-small' %>
+       
+          <%= f.label :credentials %>
+          <%= f.check_box :credentials, class: 'margin-right-small' %>
+        
+          <%= f.label :checkin, Participant::CHECK_IN_NAME, class: 'checkinName' %>
+          <%= f.check_box :checkin %>
+        </div>
       </div>
       <div class="form-group">
         <%= f.label "Plan" %>
@@ -56,8 +58,9 @@
     <% else %>
       <%= f.hidden_field :plan_id %>
     <% end %>
-    <p></p>
-    <%= f.submit name_btn_submit, class: 'btn btn-success'%>
+    <div class="margin-top-bottom">
+      <%= f.submit name_btn_submit, class: 'btn btn-success'%>
+    </div>
   <% end %>
 </section>
 

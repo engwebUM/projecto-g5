@@ -1,47 +1,61 @@
 <!-- <p id="notice"><%= notice %></p> -->
 <section class="ShowParticipant">
-	<h3 class="ShowParticipant-title">Participant</h3>
-	<p class="ShowParticipant-name">
-	  <strong>Name:</strong>
-	  <%= @participant.name %>
-	</p>
-	<p class="ShowParticipant-email">
-	  <strong>Email:</strong>
-	  <%= @participant.email %>
-	</p>
-	<p>
-	  <strong>Twitter:</strong>
-	  <%= @participant.twitter %>
-	</p>
-	<p>
-	  <strong>Github:</strong>
-	  <%= @participant.github %>
-	</p>
-	<p>
-	  <strong>Company:</strong>
-	  <%= @participant.company %>
-	</p>
-	<p>
-	  <strong>Kit?:</strong>
-	  <%= @participant.kit.yesno %>
-	</p>
-	<p>
-	  <strong>Paid?:</strong>
-	  <%= @participant.paid.yesno %>
-	</p>
-	<p>
-	  <strong>Credentials created?:</strong>
-	  <%= @participant.credentials.yesno %>
-	</p>
-	<p class="ShowParticipant-checkin">
-	  <strong>Checkin Done?:</strong>
-	  <%= @participant.checkin.yesno %>
-	</p>
-	<p>
-	  <strong>Plan:</strong>
-	  <%= @participant.plan.name %>
-	</p>
-
-	<%= link_to 'Edit', edit_admin_participant_path(@participant), class: 'ShowParticipant-edit'%> |
-	<%= link_to 'Back', admin_participants_path, class: 'ShowParticipant-back' %>
+	<h1 class="title">Participant</h1>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+		  <h4 class="panel-title"> <%= @participant.name %> </h4>
+		</div>
+		<div class="panel-body">
+		<div class="row">
+				<table class="table table-user-information">
+					<tbody>
+						<tr>
+							<td>Email:</td>
+							<td><%= @participant.email %></td>
+						</tr>
+						<tr>
+							<td>Checkin:</td>
+							<td><%= @participant.checkin %></td>
+						</tr>
+						<tr>
+							<td>Twitter:</td>
+							<td><%= @participant.twitter %></td>
+						</tr>
+						<tr>
+							<td>Github:</td>
+							<td><%= @participant.github %></td>
+						</tr>
+						<tr>
+							<td>Company:</td>
+							<td><%= @participant.company %></td>
+						</tr>
+						<tr>
+							<td>Checkin:</td>
+							<td><%= @participant.checkin %></td>
+						</tr>
+						<tr>
+							<td>Kit?:</td>
+							<td><%= @participant.kit.yesno %></td>
+						</tr>
+						<tr>
+							<td>Paid:</td>
+							<td><%= @participant.paid.yesno %></td>
+						</tr>
+						<tr>
+							<td>Credentials created?:</td>
+							<td><%= @participant.credentials.yesno %></td>
+						</tr>
+						<tr>
+							<td>Checkin Done?:</td>
+							<td><%= @participant.checkin.yesno %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>	
+	</div>	
+	<div class="panel-footer">
+		<%= link_to 'Edit', edit_admin_participant_path(@participant), class: 'ShowParticipant-edit'%> |
+		<%= link_to 'Back', admin_participants_path, class: 'ShowParticipant-back' %>
+	</div>
+	</div>	
 </section>

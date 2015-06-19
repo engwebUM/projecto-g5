@@ -2,45 +2,26 @@
 <%= javascript_include_tag 'participants/script' %>
 
 <section class="Homepage">
-	<div class="inner-cover">
+	<div class="Homepage-logo">
 	  <%= image_tag("logo.png", :alt => "logo") %>
-	  <h1 class="cover-heading"></h1>
-	  <p class="lead">The most precious Ruby Conference in the world!</p>
+	  <p class="Homepage-slogan">The most precious Ruby Conference in the world!</p>
 	 </div>
-<%= @active_plan_id %>
-	<% @plans.each do |plan| %>
-		<div <%= (plan.active) ? "data-plan-id=" + plan.id.to_s : ""  %>><%= plan.start_time %><%= plan.active %></br></div>
-	<% end %>
-
-	<%= render 'admin/participants/form', participant: @participant, url: participants_path, name_btn_submit: "Register", plan_id: nil %>
-
-	<div class="type-tickets">
-		<div class="early-bird">
-		  	<div class="content">
-			  <h2>Early Bird</h2>
-			  <h3>150€</h3>
-			  <p>Ends on June 10th (Limited to 100 Tickets)</p>
+	<div class="col-md-6 col-md-offset-3">
+		<%= render 'admin/participants/form', participant: @participant, url: participants_path, name_btn_submit: "Register", plan_id: nil %>
+	</div>
+	<div class="col-md-12">
+		<% @plans.each do |plan| %>
+			<div class="col-md-4 text-center">
+		  	<div <%= (plan.active) ? "data-plan-id=" + plan.id.to_s : ""  %> class="panel panel-success panel-pricing panel-<%= (plan.active) ? "early" : "regular" %>">
+		  		<div class="panel-heading"><h3><%= plan.name %></h3></div>
+			  	<div class="panel-body text-center"><p><strong><%= plan.price %> €</strong></p></div>
+			  	<div class="list-group-item"><p>
+			  		<%= (plan.finished) ? "This plan has ended" : "Starts on " + plan.start_time.strftime('%A, %e %h %G') %>
+			  	</p></div>
 		  	</div>
-		</div>
-
-		<div class="regular-ticket">
-			<div class="content">
-			  <h2>Regular Ticket</h2>
-			  <h3>200€</h3>
-			  <p>Starts on June 11th</p>
-			</div>		  
-		</div>
-
-		<div class="late-ticket">
-		  
-		  	<div class="content">
-			  <h2>Late Ticket</h2>
-			  <h3>250€</h3>
-			  <p>Starts on August 13th 11th</p>
-			</div>  
-		</div>
-	</div>	
-	<div class="mastfoot">
+			</div>
+		<% end %>
+	<div class="Homepage-footer col-md-12">
 		<p>14-15 September</p>
 	    <p>Braga, Portugal</p>
 	</div>

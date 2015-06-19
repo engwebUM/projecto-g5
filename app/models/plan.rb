@@ -1,9 +1,13 @@
 class Plan < ActiveRecord::Base
-	attr_accessor :active
+	attr_accessor :active, :finished
 	after_initialize :set_default_discount, if: [:new_record?]
 
 	def active
     @active || false
+  end
+
+  def finished
+    @finished || false
   end
 
   def set_default_discount
