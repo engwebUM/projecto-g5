@@ -23,19 +23,23 @@
 	</p>
 	<p>
 	  <strong>Kit?:</strong>
-	  <%= @participant.kit %>
+	  <%= @participant.kit.yesno %>
 	</p>
 	<p>
 	  <strong>Paid?:</strong>
-	  <%= @participant.paid %>
+	  <%= @participant.paid.yesno %>
 	</p>
 	<p>
 	  <strong>Credentials created?:</strong>
-	  <%= @participant.credentials %>
+	  <%= @participant.credentials.yesno %>
 	</p>
 	<p class="ShowParticipant-checkin">
 	  <strong>Checkin Done?:</strong>
-	  <%= @participant.checkin %>
+	  <%= @participant.checkin.yesno %>
+	</p>
+	<p>
+	  <strong>Plan:</strong>
+	  <%= @participant.plan.name %>
 	</p>
 
 	<%= link_to 'Edit', edit_admin_participant_path(@participant), class: 'ShowParticipant-edit'%> |

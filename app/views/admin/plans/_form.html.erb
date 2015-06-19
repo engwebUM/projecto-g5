@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'plans/validate-form' %>
+
 <section class="Plan">
   <%= form_for(plan, url: url, :html => {:class => "form-horizontal form-plan"}) do |f| %>
     <% if plan.errors.any? %>
@@ -11,8 +13,8 @@
       </div>
     <% end %>
     <div class="form-group">
-      <%= f.label :name, class: "sr-only" %>
-      <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+      <%= f.label :name, class: "sr-only" %> 
+      <%= f.text_field :name, class: "form-control", placeholder: "Name", required: true %>
     </div>
     <div class="form-group">
       <%= f.label :description, class: "sr-only" %>
@@ -20,7 +22,7 @@
     </div>
     <div class="form-group">
       <%= f.label :price, class: "sr-only" %>
-      <%= f.number_field :price, class: "form-control", placeholder: "Price", min: 0 %>
+      <%= f.number_field :price, class: "form-control", placeholder: "Price", min: 0, required: true %>
     </div>
     <div class="form-group">
       <%= f.label :discount, class: "sr-only" %>
@@ -28,26 +30,8 @@
     </div>
     <div class="form-group">
       <%= f.label :start_time, class: "sr-only" %>
-      <%= f.text_field :start_time, class: "form-control", placeholder: "Start Time" %>
+      <%= f.text_field :start_time, class: "form-control", placeholder: "Start Time", required: true, value: (plan.start_time) ? plan.start_time.strftime("%d/%m/%Y") : "" %>
     </div>
     <%= f.submit name_btn_submit, class: 'btn btn-success'%>
   <% end %>
 </section>
-<script type="text/javascript">
-  $(function() {
-    $("#plan_start_time").datepicker({ 
-      dateFormat: 'dd/mm/yy'
-    });
-    $("#plan_start_time").datepicker("setDate", this.val());
-    $("#plan_start_time").datepicker("option", "showAnim", "drop");
-  });
-  $(function() {
-    $(".form-plan").validate({
-      rules: {
-        "plan[name]": {required: true},
-        "plan[price]": {required: true},
-        "plan[start_time]": {required: true, date: true}
-      }
-    });
-  });
-</script>

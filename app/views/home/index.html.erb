@@ -1,17 +1,18 @@
+<%= javascript_include_tag 'participants/validate-form' %>
+<%= javascript_include_tag 'participants/script' %>
+
 <section class="Homepage">
 	<div class="inner-cover">
 	  <%= image_tag("logo.png", :alt => "logo") %>
 	  <h1 class="cover-heading"></h1>
 	  <p class="lead">The most precious Ruby Conference in the world!</p>
 	 </div>
+<%= @active_plan_id %>
+	<% @plans.each do |plan| %>
+		<div <%= (plan.active) ? "data-plan-id=" + plan.id.to_s : ""  %>><%= plan.start_time %><%= plan.active %></br></div>
+	<% end %>
 
-	<%= javascript_include_tag 'participants/validate-form' %>
-
-	<%= render 'admin/participants/form', participant: @participant, url: participants_path, name_btn_submit: "Register" %>
-
-	<script type='text/javascript'>
-	  validateForm($("#new_participant"));
-	</script>
+	<%= render 'admin/participants/form', participant: @participant, url: participants_path, name_btn_submit: "Register", plan_id: nil %>
 
 	<div class="type-tickets">
 		<div class="early-bird">
@@ -46,3 +47,8 @@
 	</div>
 
 </section>
+
+<script type='text/javascript'>
+  validateForm($("#new_participant"));
+  setPlanIdForParticipant("#participant_plan_id", "data-plan-id");
+</script>
