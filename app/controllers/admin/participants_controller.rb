@@ -40,6 +40,11 @@ class Admin::ParticipantsController < ApplicationController
     @participant.update_attribute(:checkin, true)
   end
 
+  def update_paid
+    @participant = Participant.find(params[:id])
+    @participant.update_attribute(:paid, true)
+  end
+
   def destroy
     @participant.destroy
     redirect_to admin_participants_path, notice: 'Participant was successfully destroyed.'

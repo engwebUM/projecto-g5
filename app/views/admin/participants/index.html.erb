@@ -36,7 +36,7 @@
                   </div>
                 <% else %>
                   <div>
-                    <%= link_to "Checkin", {:action => "update_checkin", :id => participant.id, :remote => true}, class: "btn btn-primary" %>
+                    <%= link_to "Checkin", {:action => "update_checkin", :id => participant.id, :remote => true}, class: "btn btn-info active", id: 'button_checkin', :onclick => 'update_button_checkin(this)' %>
                   </div>
                 <% end %>
               </td>
@@ -48,7 +48,21 @@
                 </div>  
               </td>
               <td><input type="checkbox" <%= (participant.kit) ? "checked" : "" %>></td>
-              <td><input type="checkbox" <%= (participant.paid) ? "checked" : "" %>></td>
+              
+              <!--<td><input type="checkbox" <%= (participant.paid) ? "checked" : "" %>></td>-->
+              <td>
+                <% if participant.paid? %>
+                  <div>
+                    <button type="button" class="btn btn-default" disabled="disabled">Paid</button>
+                  </div>
+                <% else %>
+                  <div>
+                    <%= link_to "Paid", {:action => "update_paid", :id => participant.id, :remote => true}, class: "btn btn-info active", id: 'button_paid', :onclick => 'update_button_paid(this)' %>
+                  </div>
+                <% end %>
+              </td>
+
+
               <td><input type="checkbox" <%= (participant.credentials) ? "checked" : "" %>></td>
               <td><%= link_to 'Show', admin_participant_path(participant) %></td>
               <td><%= link_to 'Edit', edit_admin_participant_path(participant) %></td>
@@ -111,5 +125,13 @@ function generateCredentials() {
   text += "</div>";
   
   document.getElementById("demo").innerHTML = text;
+}
+
+function update_button_checkin(el) {
+  el.className = "btn btn-default";
+}
+
+function update_button_paid(el) {
+  el.className = "btn btn-default";
 }
 </script>
