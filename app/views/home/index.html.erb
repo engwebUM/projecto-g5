@@ -1,48 +1,42 @@
+<%= javascript_include_tag 'participants/validate-form' %>
+<%= javascript_include_tag 'participants/script' %>
+
 <section class="Homepage">
-	<div class="inner-cover">
+	<div class="Homepage-logo">
 	  <%= image_tag("logo.png", :alt => "logo") %>
-	  <h1 class="cover-heading"></h1>
-	  <p class="lead">The most precious Ruby Conference in the world!</p>
+	  <p class="Homepage-slogan">The most precious Ruby Conference in the world!</p>
 	 </div>
-
-	<%= javascript_include_tag 'participants/validate-form' %>
-
-	<%= render 'admin/participants/form', participant: @participant, url: participants_path %>
-
-	<script type='text/javascript'>
-	  validateForm($("#new_participant"));
-	</script>
-
-	<div class="type-tickets">
-		<div class="early-bird">
-		  	<div class="content">
-			  <h2>Early Bird</h2>
-			  <h3>150€</h3>
-			  <p>Ends on June 10th (Limited to 100 Tickets)</p>
-			  <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Buy Ticket</a></p>-->
+	<div class="col-md-6 col-md-offset-3">
+		<%= render 'admin/participants/form', participant: @participant, url: participants_path, name_btn_submit: "Register", plan_id: nil %>
+	</div>
+	<% if !admin_user_signed_in? %>
+	<div class="col-md-12">
+		<% @plans.each do |plan| %>
+			<div class="col-md-4 text-center">
+		  	<div <%= (plan.active) ? "data-plan-id=" + plan.id.to_s : ""  %> class="panel panel-success panel-pricing panel-<%= (plan.active) ? "early" : "regular" %>">
+		  		<div class="panel-heading"><h3><%= plan.name %></h3></div>
+			  	<div class="panel-body text-center"><p><strong><%= plan.price %> €</strong></p></div>
+			  	<div class="list-group-item"><p>
+			  		<% if (plan.finished) %>
+			  			Ended on <%= plan.start_time.strftime('%A, %h %e') %>
+		  			<% elsif (plan.active) %>
+			  			Active since <%= plan.start_time.strftime('%A, %h %e') %>
+			  		<% else %>
+			  			Starts on <%= plan.start_time.strftime('%A, %h %e') %>
+			  		<% end %>
+			  	</p></div>
 		  	</div>
-		</div>
-
-		<div class="regular-ticket">
-			<div class="content">
-			  <h2>Regular Ticket</h2>
-			  <h3>200€</h3>
-			  <p>Starts on June 11th</p>
-			</div>		  
-		</div>
-
-		<div class="late-ticket">
-		  
-		  	<div class="content">
-			  <h2>Late Ticket</h2>
-			  <h3>250€</h3>
-			  <p>Starts on August 13th 11th</p>
-			</div>  
-		</div>
-	</div>	
-	<div class="mastfoot">
+			</div>
+		<% end %>
+	<% end %>
+	<div class="Homepage-footer col-md-12">
 		<p>14-15 September</p>
 	    <p>Braga, Portugal</p>
 	</div>
 
 </section>
+
+<script type='text/javascript'>
+  validateForm($("#new_participant"));
+  setPlanIdForParticipant("#participant_plan_id", "data-plan-id");
+</script>

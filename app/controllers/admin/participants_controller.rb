@@ -35,6 +35,11 @@ class Admin::ParticipantsController < ApplicationController
     end
   end
 
+  def update_checkin
+    @participant = Participant.find(params[:id])
+    @participant.update_attribute(:checkin, true)
+  end
+
   def destroy
     @participant.destroy
     redirect_to admin_participants_path, notice: 'Participant was successfully destroyed.'
@@ -47,6 +52,6 @@ class Admin::ParticipantsController < ApplicationController
   end
 
   def participant_params
-    params.require(:participant).permit(:name, :email, :checkin)
+    params.require(:participant).permit(:name, :email, :checkin, :kit, :twitter, :github, :company, :paid, :credentials, :plan_id)
   end
 end

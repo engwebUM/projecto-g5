@@ -1,5 +1,6 @@
+<%= javascript_include_tag 'participants/validate-form' %>
 <section class="Participant">
-  <%= form_for(participant, url: url) do |f| %>
+  <%= form_for(participant, url: url, :html => {:class => "form-horizontal"}) do |f| %>
     <% if participant.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(participant.errors.count, "error") %> prohibited this participant from being saved:</h2>
@@ -10,27 +11,58 @@
         </ul>
       </div>
     <% end %>
-
-    <div class="Participant-name">
-      <%= f.label :name %><br>
-      <%= f.text_field :name %>
+    <div class="form-group">
+      <%= f.label :name, class: "sr-only" %>
+      <%= f.text_field :name, class: "form-control", placeholder: "Enter name", required: true %>
     </div>
-    <div class="Participan-email">
-      <%= f.label :email %><br>
-      <%= f.text_field :email %>
+    <div class="form-group">
+      <%= f.label :email, class: "sr-only" %>
+      <%= f.text_field :email, class: "form-control", placeholder: "Enter email", required: true %>
     </div>
-
-    
+    <div class="form-group">
+      <%= f.label :company, class: "sr-only" %>
+      <%= f.text_field :company, class: "form-control", placeholder: "Company" %>
+    </div>
+  
+    <h4>Social Links</h4>
+    <div class="form-group">
+      <%= f.label :twitter, class: "sr-only" %>
+      <%= f.text_field :twitter, class: "form-control", placeholder: "Twitter", url: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :github, class: "sr-only" %>
+      <%= f.text_field :github, class: "form-control", placeholder: "Github", url: true %>
+    </div>
     <% if admin_user_signed_in? %>
-      <div class="Participant-ckeckin">
-        <%= f.label :checkin, class: 'checkinName' %>
-        <%= f.check_box :checkin, class: 'checkin' %>
+      <div class="col-md-12">
+        <h4>Admin</h4>
+        <div>
+          <%= f.label :kit %>
+          <%= f.check_box :kit, class: 'margin-right-small' %>
+        
+          <%= f.label :paid %>
+          <%= f.check_box :paid, class: 'margin-right-small' %>
+       
+          <%= f.label :credentials %>
+          <%= f.check_box :credentials, class: 'margin-right-small' %>
+        
+          <%= f.label :checkin, Participant::CHECK_IN_NAME, class: 'checkinName' %>
+          <%= f.check_box :checkin %>
+        </div>
       </div>
+      <div class="form-group">
+        <%= f.label "Plan" %>
+        <%= f.select :plan_id, options_from_collection_for_select(Plan.all, :id, :name, plan_id ), {}, {class: 'form-control'} %>
+      </div>
+    <% else %>
+      <%= f.hidden_field :plan_id %>
     <% end %>
-
-
-    <div class="Participant-button">
-      <%= f.submit "Create Participant", class: 'btn btn-primary'%>
+    <div class="margin-top-bottom">
+      <%= f.submit name_btn_submit, class: 'btn btn-primary'%>
     </div>
   <% end %>
 </section>
+
+<script type='text/javascript'>
+  validateForm($("form"));
+</script>

@@ -1,0 +1,37 @@
+<%= javascript_include_tag 'plans/validate-form' %>
+
+<section class="Plan">
+  <%= form_for(plan, url: url, :html => {:class => "form-horizontal form-plan"}) do |f| %>
+    <% if plan.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+        <ul>
+        <% plan.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :name, class: "sr-only" %> 
+      <%= f.text_field :name, class: "form-control", placeholder: "Name", required: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description, class: "sr-only" %>
+      <%= f.text_field :description, class: "form-control", placeholder: "Description" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :price, class: "sr-only" %>
+      <%= f.number_field :price, class: "form-control", placeholder: "Price", min: 0, required: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :discount, class: "sr-only" %>
+      <%= f.number_field :discount, class: "form-control", placeholder: "Discount", min: 0 %>
+    </div>
+    <div class="form-group">
+      <%= f.label :start_time, class: "sr-only" %>
+      <%= f.text_field :start_time, class: "form-control", placeholder: "Start Time", required: true, value: (plan.start_time) ? plan.start_time.strftime("%d/%m/%Y") : "" %>
+    </div>
+    <%= f.submit name_btn_submit, class: 'btn btn-success'%>
+  <% end %>
+</section>
