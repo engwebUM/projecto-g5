@@ -1,0 +1,104 @@
+body{
+	background-color: white;
+}
+
+.inner-cover, .mastfoot{
+	text-align: center;
+}
+
+.field{
+	margin-top: 15px;
+	text-align: center;	
+}
+
+.actions{
+	margin-top: 5px;
+	text-align: center;	
+}
+
+.Homepage-tickets{
+	margin-top: 20px;
+}
+
+.type-tickets .early-bird{
+	width: 350px;
+	margin-left: 10px;	
+}
+
+.early-bird .content, .regular-ticket .content, .late-ticket .content {
+	text-align: center;	
+}
+
+.regular-ticket, .late-ticket{
+	width: 350px;
+	margin-left: 10px;	
+}
+
+.early-bird, .regular-ticket, .late-ticket{
+	display: inline-block;
+	border-style: double;
+	border-width: 5px;
+	border-top-color: #999999;
+	margin-top: 20px;
+}
+
+.inner{
+	margin-top: 2px;
+}
+
+.Login{
+	font-family: arial, sans-serif;
+}
+
+.Login-form{
+	background-color: rgba(237,237,237,0.2);
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    width: 270px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Login-logo{
+	text-align: center;
+}
+
+.Login .logo{
+	width: 50%;
+}
+
+.Login-title { 
+	border:0 solid #fff; 
+	border-bottom-width:1px;
+	padding-bottom:10px;
+	text-align: center;
+}
+
+.navbar-brand, .nav navbar-nav pull-right {
+	display: flex;
+    align-items: center;
+}
+
+.icon-logo{
+	width: 40px;
+	height: 40px;
+	font-size: 18px;
+}
+
+.alert{
+	padding:0;
+	margin:0;
+}
+
+.margin-right-small{
+	margin-right:10px !important;
+}
+
+

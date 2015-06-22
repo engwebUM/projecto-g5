@@ -17,6 +17,42 @@
 							<td>Checkin:</td>
 							<td><%= @participant.checkin %></td>
 						</tr>
+						<tr>
+							<td>Twitter:</td>
+							<td><%= @participant.twitter %></td>
+						</tr>
+						<tr>
+							<td>Github:</td>
+							<td><%= @participant.github %></td>
+						</tr>
+						<tr>
+							<td>Company:</td>
+							<td><%= @participant.company %></td>
+						</tr>
+						<tr>
+							<td>Checkin:</td>
+							<td><%= @participant.checkin.humanize %></td>
+						</tr>
+						<tr>
+							<td>Kit?:</td>
+							<td><%= @participant.kit.humanize %></td>
+						</tr>
+						<tr>
+							<td>Paid:</td>
+							<td><%= @participant.paid.humanize %></td>
+						</tr>
+						<tr>
+							<td>Credentials created?:</td>
+							<td><%= @participant.credentials.humanize %></td>
+						</tr>
+						<tr>
+							<td>Checkin Done?:</td>
+							<td><%= @participant.checkin.humanize %></td>
+						</tr>
+						<tr>
+							<td>Plan:</td>
+							<td><%= @participant.plan.name %></td>
+						</tr>
 					</tbody>
 				</table>
 			</div>	
@@ -26,6 +62,4 @@
 		<%= link_to 'Back', admin_participants_path, class: 'ShowParticipant-back' %>
 	</div>
 	</div>	
-	
-		
 </section>

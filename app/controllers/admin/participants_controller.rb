@@ -47,6 +47,6 @@ class Admin::ParticipantsController < ApplicationController
   end
 
   def participant_params
-    params.require(:participant).permit(:name, :email, :checkin)
+    params.require(:participant).permit(:name, :email, :checkin, :kit, :twitter, :github, :company, :paid, :credentials, :plan_id)
   end
 end

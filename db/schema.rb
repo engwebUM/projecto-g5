@@ -11,17 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507214924) do
+ActiveRecord::Schema.define(version: 20150620144644) do
 
   create_table "participants", force: :cascade do |t|
-    t.string   "name", default: "", null: false
-    t.string   "email", default: "", null: false
+    t.string   "name",        default: "", null: false
+    t.string   "email",       default: "", null: false
     t.boolean  "checkin"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.boolean  "kit"
+    t.string   "twitter"
+    t.string   "github"
+    t.string   "company"
+    t.boolean  "paid"
+    t.boolean  "credentials"
+    t.integer  "plan_id"
   end
 
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true
+  add_index "participants", ["plan_id"], name: "index_participants_on_plan_id"
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "price"
+    t.integer  "discount"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.date     "start_time"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

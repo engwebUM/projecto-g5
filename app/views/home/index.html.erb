@@ -1,47 +1,42 @@
+<%= javascript_include_tag 'participants/validate-form' %>
+<%= javascript_include_tag 'participants/script' %>
+
 <section class="Homepage">
 	<div class="Homepage-logo">
 	  <%= image_tag("logo.png", :alt => "logo") %>
 	  <p class="Homepage-slogan">The most precious Ruby Conference in the world!</p>
 	 </div>
-
-	<%= javascript_include_tag 'participants/validate-form' %>
-
-	<%= render 'admin/participants/form', participant: @participant, url: participants_path %>
-
-	<script type='text/javascript'>
-	  validateForm($("#new_participant"));
-	</script>
-
-	<div class="Homepage-plans">
-		<div class="container">
+	<div class="col-md-6 col-md-offset-3">
+		<%= render 'admin/participants/form', participant: @participant, url: participants_path, name_btn_submit: "Register", plan_id: nil %>
+	</div>
+	<% if !admin_user_signed_in? %>
+	<div class="col-md-12">
+		<% @plans.each do |plan| %>
 			<div class="col-md-4 text-center">
-			  	<div class="panel panel-success panel-pricing panel-early">
-			  		<div class="panel-heading"><h3>Early Bird</h3></div>
-				  	<div class="panel-body text-center"><p><strong>150€</strong></p></div>
-				  	<div class="list-group-item"><p>Ends on June 10th (Limited to 100 Tickets)</p></div>
-			  	</div>
+		  	<div <%= (plan.active) ? "data-plan-id=" + plan.id.to_s : ""  %> class="panel panel-success panel-pricing panel-<%= (plan.active) ? "early" : "regular" %>">
+		  		<div class="panel-heading"><h3><%= plan.name %></h3></div>
+			  	<div class="panel-body text-center"><p><strong><%= plan.price %> €</strong></p></div>
+			  	<div class="list-group-item"><p>
+			  		<% if (plan.finished) %>
+			  			Ended on <%= plan.start_time.strftime('%A, %h %e') %>
+		  			<% elsif (plan.active) %>
+			  			Active since <%= plan.start_time.strftime('%A, %h %e') %>
+			  		<% else %>
+			  			Starts on <%= plan.start_time.strftime('%A, %h %e') %>
+			  		<% end %>
+			  	</p></div>
+		  	</div>
 			</div>
-
-			<div class="col-md-4 text-center">
-			  	<div class="panel panel-success panel-pricing panel-regular">
-			  		<div class="panel-heading"><h3>Regular Ticket</h3></div>
-				  	<div class="panel-body text-center"><p><strong>200€</strong></p></div>
-				  	<div class="list-group-item"><p>Starts on June 11th</p></div>
-			  	</div>
-			</div>
-			
-			<div class="col-md-4 text-center">
-			  	<div class="panel panel-success panel-pricing panel-late">
-			  		<div class="panel-heading"><h3>Late Ticket</h3></div>
-				  	<div class="panel-body text-center"><p><strong>250€</strong></p></div>
-				  	<div class="list-group-item"><p>Starts on August 13th</p></div>
-			  	</div>
-			</div>
-		</div>	
-	</div>	
-	<div class="Homepage-footer">
+		<% end %>
+	<% end %>
+	<div class="Homepage-footer col-md-12">
 		<p>14-15 September</p>
 	    <p>Braga, Portugal</p>
 	</div>
 
 </section>
+
+<script type='text/javascript'>
+  validateForm($("#new_participant"));
+  setPlanIdForParticipant("#participant_plan_id", "data-plan-id");
+</script>
