@@ -9,6 +9,7 @@
 	<div class="col-md-6 col-md-offset-3">
 		<%= render 'admin/participants/form', participant: @participant, url: participants_path, name_btn_submit: "Register", plan_id: nil %>
 	</div>
+	<% if !admin_user_signed_in? %>
 	<div class="col-md-12">
 		<% @plans.each do |plan| %>
 			<div class="col-md-4 text-center">
@@ -16,11 +17,18 @@
 		  		<div class="panel-heading"><h3><%= plan.name %></h3></div>
 			  	<div class="panel-body text-center"><p><strong><%= plan.price %> €</strong></p></div>
 			  	<div class="list-group-item"><p>
-			  		<%= (plan.finished) ? "This plan has ended" : "Starts on " + plan.start_time.strftime('%A, %e %h %G') %>
+			  		<% if (plan.finished) %>
+			  			Ended on <%= plan.start_time.strftime('%A, %h %e') %>
+		  			<% elsif (plan.active) %>
+			  			Active since <%= plan.start_time.strftime('%A, %h %e') %>
+			  		<% else %>
+			  			Starts on <%= plan.start_time.strftime('%A, %h %e') %>
+			  		<% end %>
 			  	</p></div>
 		  	</div>
 			</div>
 		<% end %>
+	<% end %>
 	<div class="Homepage-footer col-md-12">
 		<p>14-15 September</p>
 	    <p>Braga, Portugal</p>

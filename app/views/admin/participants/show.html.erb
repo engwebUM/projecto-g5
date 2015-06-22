@@ -31,23 +31,27 @@
 						</tr>
 						<tr>
 							<td>Checkin:</td>
-							<td><%= @participant.checkin %></td>
+							<td><%= @participant.checkin.humanize %></td>
 						</tr>
 						<tr>
 							<td>Kit?:</td>
-							<td><%= @participant.kit.yesno %></td>
+							<td><%= @participant.kit.humanize %></td>
 						</tr>
 						<tr>
 							<td>Paid:</td>
-							<td><%= @participant.paid.yesno %></td>
+							<td><%= @participant.paid.humanize %></td>
 						</tr>
 						<tr>
 							<td>Credentials created?:</td>
-							<td><%= @participant.credentials.yesno %></td>
+							<td><%= @participant.credentials.humanize %></td>
 						</tr>
 						<tr>
 							<td>Checkin Done?:</td>
-							<td><%= @participant.checkin.yesno %></td>
+							<td><%= @participant.checkin.humanize %></td>
+						</tr>
+						<tr>
+							<td>Plan:</td>
+							<td><%= @participant.plan.name %></td>
 						</tr>
 					</tbody>
 				</table>

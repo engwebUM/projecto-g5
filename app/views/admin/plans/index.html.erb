@@ -16,12 +16,12 @@
           <% @plans.each do |plan| %>
             <tr>
               <td><%= plan.name %></td>
-              <td><%= number_with_precision(plan.price, :precision => 2) %> €</td>
+              <td><%= plan.price %> €</td>
               <td><%= plan.discount %> %</td>
               <td><%= plan.start_time.strftime("%d/%m/%Y") %></td>
               <td><%= link_to 'Show', admin_plan_path(plan) %></td>
               <td><%= link_to 'Edit', edit_admin_plan_path(plan) %></td>
-              <td><%= link_to 'Destroy', admin_plan_path(plan), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Destroy', admin_plan_path(plan), method: :delete, data: { confirm: 'Are you sure? Participants associated with this plan are also deleted.' } %></td>
             </tr>
           <% end %>
         </tbody>

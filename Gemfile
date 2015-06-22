@@ -33,6 +33,7 @@ gem 'autoprefixer-rails'
 gem 'jquery-validation-rails', '~> 1.13.1'
 gem 'date_validator', '~> 0.8.1'
 gem 'jquery-ui-rails'
+gem 'humanize_boolean'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

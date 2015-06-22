@@ -1,12 +1,12 @@
 class Admin::PlansController < ApplicationController
-	before_action :authenticate_admin_user!
+  before_action :authenticate_admin_user!
 
-	def index
+  def index
     @plans = Plan.all
   end
 
   def show
-  	@plan = Plan.find(params[:id])
+    @plan = Plan.find(params[:id])
     redirect_to root_path, alert: 'Access denied.' unless current_admin_user.admin? unless @user == current_admin_user
   end
 
@@ -29,7 +29,7 @@ class Admin::PlansController < ApplicationController
   end
 
   def update
-  	@plan = Plan.find(params[:id])
+    @plan = Plan.find(params[:id])
     if @plan.update_attributes(plan_params)
       redirect_to admin_plans_path, notice: 'Plan was successfully updated.'
     else
@@ -38,12 +38,12 @@ class Admin::PlansController < ApplicationController
   end
 
   def destroy
-  	plan = Plan.find(params[:id])
+    plan = Plan.find(params[:id])
     plan.destroy
     redirect_to admin_plans_path, notice: 'Plan was successfully destroyed.'
   end
 
-  private 
+  private
 
   def plan_params
     params.require(:plan).permit(:name, :description, :price, :discount, :start_time)
