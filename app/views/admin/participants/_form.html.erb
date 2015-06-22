@@ -19,12 +19,16 @@
       <%= f.label :email %><br>
       <%= f.text_field :email %>
     </div>
+
+    
     <% if admin_user_signed_in? %>
       <div class="Participant-ckeckin">
         <%= f.label :checkin, class: 'checkinName' %>
         <%= f.check_box :checkin, class: 'checkin' %>
       </div>
     <% end %>
+
+
     <div class="Participant-button">
       <%= f.submit "Create Participant", class: 'btn btn-primary'%>
     </div>
