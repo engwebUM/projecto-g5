@@ -23,4 +23,13 @@ class Plan < ActiveRecord::Base
   validates :price, presence: true
   validates_numericality_of :price, greater_than: 0
   validates :start_time, date: true
+
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+
+  def self.search(params)
+    tire.search(load: true) do
+      query { string params[:query]} if params[:query].present?
+    end
+  end
 end

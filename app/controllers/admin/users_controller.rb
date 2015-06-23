@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :admin_only, except: [:show]
 
   def index
-    @users = User.all
+    @users = User.search(params)
   end
 
   def show

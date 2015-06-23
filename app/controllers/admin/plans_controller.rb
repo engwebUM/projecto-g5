@@ -2,7 +2,7 @@ class Admin::PlansController < ApplicationController
   before_action :authenticate_admin_user!
 
   def index
-    @plans = Plan.all
+    @plans = Plan.search(params)
   end
 
   def show

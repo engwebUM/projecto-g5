@@ -22,4 +22,13 @@ class Participant < ActiveRecord::Base
     format: { with: URI.regexp(%w(http https)) },
     allow_blank: true
   validates :plan_id, presence: true
+
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+
+  def self.search(params)
+    tire.search(load: true) do
+      query { string params[:query]} if params[:query].present?
+    end
+  end
 end
