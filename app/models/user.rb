@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
     self.role ||= :guest
   end
 
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+  devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 end
