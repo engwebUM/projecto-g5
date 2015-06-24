@@ -10,9 +10,9 @@ class User < ActiveRecord::Base
 
   def self.search(search)
     if search
-      self.where("email like ?", "%#{search}%").order("email")
+      where('email like ?', "%#{search}%").order('email')
     else
-      self.all.order("email")
+      all.order('email')
     end
   end
 end

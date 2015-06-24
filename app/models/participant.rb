@@ -25,9 +25,9 @@ class Participant < ActiveRecord::Base
 
   def self.search(search)
     if search
-      self.where("email like ?", "%#{search}%").order("name")
+      where('email like ?', "%#{search}%").order('name')
     else
-      self.all.order("name")
+      all.order('name')
     end
   end
 end
