@@ -3,7 +3,7 @@ class Admin::ParticipantsController < ApplicationController
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @participants = Participant.search(params)
+    @participants = Participant.paginate(page: params[:page], per_page: 10)
   end
 
   def show
@@ -36,6 +36,7 @@ class Admin::ParticipantsController < ApplicationController
   end
 
   def destroy
+    Participant.tire.index.remove @participant
     @participant.destroy
     redirect_to admin_participants_path, notice: 'Participant was successfully destroyed.'
   end

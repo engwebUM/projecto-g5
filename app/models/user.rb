@@ -6,14 +6,5 @@ class User < ActiveRecord::Base
     self.role ||= :guest
   end
 
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
-
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
-
-  def self.search(params)
-    tire.search(load: true, page: params[:page], per_page: 10) do
-      query { string params[:query]} if params[:query].present?
-    end
-  end
+  devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 end

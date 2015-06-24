@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'ruby-progressbar', '~> 1.7.5'
 
 gem 'devise', '~> 3.4.1'
-
+gem 'devise_invitable', '~> 1.3.4'
 gem 'dotenv-rails'
 
 gem 'bootstrap-sass', '~> 3.3.4.1'
