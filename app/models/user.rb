@@ -7,4 +7,12 @@ class User < ActiveRecord::Base
   end
 
   devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+
+  def self.search(search)
+    if search
+      where('email like ?', "%#{search}%").order('email')
+    else
+      all.order('email')
+    end
+  end
 end

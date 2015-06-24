@@ -34,6 +34,8 @@ gem 'jquery-validation-rails', '~> 1.13.1'
 gem 'date_validator', '~> 0.8.1'
 gem 'jquery-ui-rails'
 gem 'humanize_boolean'
+gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate-bootstrap'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

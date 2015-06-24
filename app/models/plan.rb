@@ -23,4 +23,12 @@ class Plan < ActiveRecord::Base
   validates :price, presence: true
   validates_numericality_of :price, greater_than: 0
   validates :start_time, date: true
+
+  def self.search(search)
+    if search
+      where('name like ?', "%#{search}%").order('name')
+    else
+      all.order('name')
+    end
+  end
 end

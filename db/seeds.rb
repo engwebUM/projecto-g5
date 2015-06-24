@@ -10,6 +10,14 @@ admin = User.create(
         password: '12345678',
         password_confirmation: '12345678'
       )
+admin.admin!
+
+admin2 = User.create( 
+        email: 'admin2@example.com', 
+        password: '12345678',
+        password_confirmation: '12345678'
+      )
+admin2.admin!
 
 plan1 = Plan.create(
         name: "Early Bird",
@@ -29,4 +37,19 @@ plan3 = Plan.create(
         start_time: "2015-08-13"
       )
 
-admin.admin!
+participant1 = Participant.create( 
+        name: 'Sandro Ferraz',
+        email: 'sandro.ferraz@example.com', 
+        plan_id: plan1.id
+      )
+participant2 = Participant.create( 
+        name: 'Filipa Deus',
+        email: 'filipa.deus@example.com', 
+        plan_id: plan1.id
+      )
+participant1 = Participant.create( 
+        name: 'Jorge Martins',
+        email: 'jorge.martins@example.com', 
+        plan_id: plan1.id
+      )
+
