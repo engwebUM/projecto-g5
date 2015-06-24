@@ -47,9 +47,14 @@ participant2 = Participant.create(
         email: 'filipa.deus@example.com', 
         plan_id: plan1.id
       )
-participant1 = Participant.create( 
+participant2 = Participant.create( 
         name: 'Jorge Martins',
         email: 'jorge.martins@example.com', 
+        plan_id: plan1.id
+      )
+participant2 = Participant.create( 
+        name: 'Adriana Cunha',
+        email: 'adriana.cunha@example.com', 
         plan_id: plan1.id
       )
 
