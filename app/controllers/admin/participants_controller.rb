@@ -3,7 +3,7 @@ class Admin::ParticipantsController < ApplicationController
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @participants = Participant.paginate(page: params[:page], per_page: 10)
+    @participants = Participant.search(params[:search]).paginate(page: params[:page], per_page: 10)
   end
 
   def show

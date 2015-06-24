@@ -34,7 +34,6 @@ gem 'jquery-validation-rails', '~> 1.13.1'
 gem 'date_validator', '~> 0.8.1'
 gem 'jquery-ui-rails'
 gem 'humanize_boolean'
-gem 'tire'
 gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap'
 

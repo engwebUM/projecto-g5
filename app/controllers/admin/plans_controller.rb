@@ -2,7 +2,7 @@ class Admin::PlansController < ApplicationController
   before_action :authenticate_admin_user!
 
   def index
-    @plans = Plan.paginate(page: params[:page], per_page: 10)
+    @plans = Plan.search(params[:search]).paginate(page: params[:page], per_page: 10)
   end
 
   def show
