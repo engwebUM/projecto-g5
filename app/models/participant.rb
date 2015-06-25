@@ -22,4 +22,12 @@ class Participant < ActiveRecord::Base
     format: { with: URI.regexp(%w(http https)) },
     allow_blank: true
   validates :plan_id, presence: true
+
+  def self.search(search)
+    if search
+      where('email like ?', "%#{search}%").order('name')
+    else
+      all.order('name')
+    end
+  end
 end

@@ -1,3 +1,4 @@
+<%= render "shared/search", url: admin_plans_path, search_parameter: "name" %>
 <div class="List">
   <div class="row">
     <h3 class="List-title">Listing Plans</h3>
@@ -32,3 +33,4 @@
     </div>
   </div>
 </div>
+<%= will_paginate @plans, renderer: BootstrapPagination::Rails %>

@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     get '/participants/update_paid/:id', to: 'participants#update_paid', as: 'participant_paid_update'
     get '/participants/update_credentials/:id', to: 'participants#update_credentials', as: 'participant_credentials_update'
   end
-
   resources :participants, only: [:create]
   root to: 'home#index'
 

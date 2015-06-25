@@ -6,5 +6,13 @@ class User < ActiveRecord::Base
     self.role ||= :guest
   end
 
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+  devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+
+  def self.search(search)
+    if search
+      where('email like ?', "%#{search}%").order('email')
+    else
+      all.order('email')
+    end
+  end
 end
