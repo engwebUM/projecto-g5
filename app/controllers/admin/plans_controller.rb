@@ -2,11 +2,11 @@ class Admin::PlansController < ApplicationController
   before_action :authenticate_admin_user!
 
   def index
-    @plans = Plan.search(params[:search]).paginate(page: params[:page], per_page: 10)
+    @plans = Plan.search(params[:search]).paginate(page: params[:page], per_page: 10).decorate
   end
 
   def show
-    @plan = Plan.find(params[:id])
+    @plan = Plan.find(params[:id]).decorate
     redirect_to root_path, alert: 'Access denied.' unless current_admin_user.admin? unless @user == current_admin_user
   end
 
@@ -25,11 +25,11 @@ class Admin::PlansController < ApplicationController
   end
 
   def edit
-    @plan = Plan.find(params[:id])
+    @plan = Plan.find(params[:id]).decorate
   end
 
   def update
-    @plan = Plan.find(params[:id])
+    @plan = Plan.find(params[:id]).decorate
     if @plan.update_attributes(plan_params)
       redirect_to admin_plans_path, notice: 'Plan was successfully updated.'
     else
