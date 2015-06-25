@@ -101,19 +101,19 @@ body{
 	margin-right:10px !important;
 }
 
-.credential {
+.background_credential {
 	margin: 10px;
 	border-style: double;
-	background-image: url("background4.jpg");
+	background-image: url("background.jpg");
 	background-repeat: no-repeat;
-	width: 420px;
+	width: 426px;
 	display: inline-block;
 }
 
 .double {
 	background-image: url("logo_small.png");
 	background-repeat: no-repeat;
-	width: 400px;
+	width: 420px;
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-top: 140px;
@@ -122,20 +122,28 @@ body{
 	color: #314B49;
 }
 
-.nome {
+.name {
 	font-weight: bold;
-	font-size: 35px;
+	font-size: 37px;
 	margin-top: 0px;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
+	padding-right: 40px;
+	text-align: right;
 }
 
-.mail {
-	margin-top: 5px;
-	margin-bottom: 5px;
+.atributes {
+	margin-top: 3px;
+	margin-bottom: 3px;
 	font-size: 12px;
 }
 
-.aux {
-	padding-left: 150px
+.credential_area {
+	padding-left: 150px;
+	font-family: arial;
+	line-height: normal;
 }
 
+.participant_info {
+	text-align: left;
+	padding-left: 40px;
+}

@@ -7,6 +7,12 @@ class Admin::ParticipantsController < ApplicationController
   end
 
   def show
+    @participant = Participant.find(params[:id])
+ 
+    respond_to do |format|
+      format.html
+      format.pdf { render pdf: generate_pdf(@participant) }
+    end
   end
 
   def new
@@ -40,9 +46,19 @@ class Admin::ParticipantsController < ApplicationController
     @participant.update_attribute(:checkin, true)
   end
 
+  def update_kit
+    @participant = Participant.find(params[:id])
+    @participant.update_attribute(:kit, true)
+  end
+
   def update_paid
     @participant = Participant.find(params[:id])
     @participant.update_attribute(:paid, true)
+  end
+
+  def update_credentials
+    @participant = Participant.find(params[:id])
+    @participant.update_attribute(:credentials, true)
   end
 
   def destroy
