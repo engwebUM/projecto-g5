@@ -37,7 +37,7 @@
                   </div>
                 <% else %>
                   <div>
-                    <%= link_to "Checkin", {:action => "update_checkin", :id => participant.id, :remote => true}, class: "btn btn-info active", id: 'button_checkin', :onclick => 'update_button_checkin(this)' %>
+                    <%= link_to "Checkin", {:action => "update_checkin", :id => participant.id, :remote => true}, class: "btn btn-info active", id: 'button_checkin', :onclick => 'update_field(this)' %>
                   </div>
                 <% end %>
               </td>
@@ -59,7 +59,7 @@
                   </div>
                 <% else %>
                   <div>
-                    <%= link_to "Paid", {:action => "update_paid", :id => participant.id, :remote => true}, class: "btn btn-info active", id: 'button_paid', :onclick => 'update_button_paid(this)' %>
+                    <%= link_to "Paid", {:action => "update_paid", :id => participant.id, :remote => true}, class: "btn btn-info active", id: 'button_paid', :onclick => 'update_field(this)' %>
                   </div>
                 <% end %>
               </td>
@@ -147,17 +147,13 @@ function generateCredentials() {
   document.getElementById("demo").innerHTML = text;
 }
 
-function update_button_checkin(el) {
+function update_field(el) {
   el.className = "btn btn-default";
 }
 
 function update_button_kit(el) {
   el.className = "btn btn-default";
   el.text = "Yes";
-}
-
-function update_button_paid(el) {
-  el.className = "btn btn-default";
 }
 </script>
 
