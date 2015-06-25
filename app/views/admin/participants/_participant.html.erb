@@ -1,0 +1,11 @@
+<tr>
+  <td><%= participant.name %></td>
+  <td><%= participant.email %></td>
+  <td><input type="checkbox" <%= (participant.kit) ? "checked" : "" %>></td>
+  <td><input type="checkbox" <%= (participant.paid) ? "checked" : "" %>></td>
+  <td><input type="checkbox" <%= (participant.credentials) ? "checked" : "" %>></td>
+  <td><input type="checkbox" <%= (participant.checkin) ? "checked" : "" %>></td>
+  <td><%= link_to 'Show', admin_participant_path(participant) %></td>
+  <td><%= link_to 'Edit', edit_admin_participant_path(participant) %></td>
+  <td><%= link_to 'Destroy', admin_participant_path(participant), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

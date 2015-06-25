@@ -1,0 +1,9 @@
+<tr>
+  <td><%= plan.name %></td>
+  <td><%= plan.price %> €</td>
+  <td><%= plan.discount %> %</td>
+  <td><%= plan.custom_format_date %></td>
+  <td><%= link_to 'Show', admin_plan_path(plan) %></td>
+  <td><%= link_to 'Edit', edit_admin_plan_path(plan) %></td>
+  <td><%= link_to 'Destroy', admin_plan_path(plan), method: :delete, data: { confirm: 'Are you sure? Participants associated with this plan are also deleted.' } %></td>
+</tr>
