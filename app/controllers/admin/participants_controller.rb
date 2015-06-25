@@ -8,7 +8,7 @@ class Admin::ParticipantsController < ApplicationController
 
   def show
     @participant = Participant.find(params[:id])
- 
+
     respond_to do |format|
       format.html
       format.pdf { render pdf: generate_pdf(@participant) }
