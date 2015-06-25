@@ -1,11 +1,10 @@
 <%= javascript_include_tag 'users/validate-form' %>
 
-<h1 class="editingUser-title">Editing User</h1>
+<h2 class="editingUser-title">Editing User</h2>
 
-<%= render 'form', user: @user, url: admin_user_path %>
+<%= render 'form', user: @user, url: admin_user_path, name_btn_submit: "Save" %>
 
-<%= link_to 'Show', admin_user_path(@user), class: 'EditingUser-show' %> |
-<%= link_to 'Back', admin_users_path, class: 'EditingParticipant-back' %>
+<%= link_to 'Back', admin_users_path, class: 'btn btn-default glyphicon glyphicon-chevron-left' %>
 
 <script type='text/javascript'>
 	validateForm($(".edit_user"));

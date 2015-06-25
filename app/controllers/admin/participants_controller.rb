@@ -10,10 +10,12 @@ class Admin::ParticipantsController < ApplicationController
   end
 
   def new
+    @plans = Plan.all
     @participant = Participant.new
   end
 
   def edit
+    @plans = Plan.all
     @participant = Participant.find(params[:id])
   end
 

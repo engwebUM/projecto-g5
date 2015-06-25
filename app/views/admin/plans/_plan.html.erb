@@ -1,9 +1,8 @@
 <tr>
   <td><%= plan.name %></td>
   <td><%= plan.price %> €</td>
-  <td><%= plan.discount %> %</td>
   <td><%= plan.custom_format_date %></td>
-  <td><%= link_to 'Show', admin_plan_path(plan) %></td>
-  <td><%= link_to 'Edit', edit_admin_plan_path(plan) %></td>
-  <td><%= link_to 'Destroy', admin_plan_path(plan), method: :delete, data: { confirm: 'Are you sure? Participants associated with this plan are also deleted.' } %></td>
+  <td><%= link_to '', admin_plan_path(plan), class: "btn btn-primary glyphicon glyphicon-eye-open", title: "Show" %></td>
+  <td><%= link_to '', edit_admin_plan_path(plan), class: "btn btn-primary glyphicon glyphicon-pencil", title: "Edit" %></td>
+  <td><%= link_to '', admin_plan_path(plan), class: "btn btn-danger glyphicon glyphicon-remove", title: "Destroy", method: :delete, data: { confirm: 'Are you sure? Participants associated with this plan are also deleted.' } %></td>
 </tr>

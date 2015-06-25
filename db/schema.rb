@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622112458) do
+ActiveRecord::Schema.define(version: 20150625230919) do
 
   create_table "participants", force: :cascade do |t|
     t.string   "name",        default: "", null: false
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20150622112458) do
     t.string   "name"
     t.string   "description"
     t.integer  "price"
-    t.integer  "discount"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.date     "start_time"

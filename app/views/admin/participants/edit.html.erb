@@ -1,8 +1,6 @@
-
-<h1 class="title">Editing Participant</h1>
+<h2 class="title">Editing Participant</h2>
 
 <%= render 'form', participant: @participant, url: admin_participant_path, name_btn_submit: "Save", plan_id: @participant.plan.id %>
 
-<%= link_to 'Show', admin_participant_path(@participant), class: 'EditingParticipant-show' %> |
-<%= link_to 'Back', admin_participants_path, class: 'EditingParticipant-back' %>
+<%= link_to 'Back', admin_participants_path, class: 'btn btn-default glyphicon glyphicon-chevron-left' %>
 

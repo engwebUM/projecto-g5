@@ -1,6 +1,5 @@
 class Plan < ActiveRecord::Base
   attr_accessor :active, :finished
-  after_initialize :set_default_discount, if: [:new_record?]
 
   def active
     @active || false
@@ -8,10 +7,6 @@ class Plan < ActiveRecord::Base
 
   def finished
     @finished || false
-  end
-
-  def set_default_discount
-    self.discount ||= 0
   end
 
   has_many :participants, dependent: :destroy

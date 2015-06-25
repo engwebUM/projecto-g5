@@ -1,14 +1,12 @@
 <%= render "shared/search", url: admin_plans_path, search_parameter: "name" %>
 <div class="List">
   <div class="row">
-    <h3 class="List-title">Listing Plans</h3>
     <div class="column">
-      <table class="table">
+      <table class="table table-hover">
         <thead>
           <tr>
             <th>Name</th>
             <th>Price</th>
-            <th>Discount</th>
             <th>Start time</th>
             <th colspan="3"></th>
           </tr>
@@ -18,7 +16,7 @@
         </tbody>
       </table>
       <p>
-        <%= link_to 'New Plan', new_admin_plan_path %>
+        <%= link_to '', new_admin_plan_path, class: "btn btn-success glyphicon glyphicon-plus", title: 'New plan' %>
       </p>
     </div>
   </div>

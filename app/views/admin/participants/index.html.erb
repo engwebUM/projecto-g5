@@ -1,9 +1,8 @@
 <%= render "shared/search", url: admin_participants_path, search_parameter: "email" %>
 <div class="List">
   <div class="row">
-    <h1 class="title">Listing Participants</h1>
     <div class="column">
-      <table class="table">
+      <table class="table table-hover">
         <thead>
           <tr>
             <th>Name</th>
@@ -20,7 +19,7 @@
         </tbody>
       </table>
       <p>
-        <%= link_to 'New Participant', new_admin_participant_path %>
+        <%= link_to '', new_admin_participant_path, class: "btn btn-success glyphicon glyphicon-plus", title: 'New participant' %>
       </p>
     </div>
   </div>

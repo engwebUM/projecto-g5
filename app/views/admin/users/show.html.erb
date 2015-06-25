@@ -1,7 +1,11 @@
 <section class="ShowUser">
-	<h1 class="ShowUser-title">User</h1>
-	<p><strong>Email:</strong> <%= @user.email if @user.email %></p>
-
-	<%= link_to 'Edit', edit_admin_user_path(@user), class: "ShowUser-edit" %> |
-	<%= link_to 'Back', admin_users_path, class: 'ShowUser-back' %>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+		  <h4 class="panel-title"> <%= @user.email if @user.email %> </h4>
+		</div>
+		<div class="panel-footer">
+			<%= link_to 'Back', admin_users_path, class: 'btn btn-default glyphicon glyphicon-chevron-left', title: 'Back' %>
+			<%= link_to '', edit_admin_user_path(@user), class: 'btn btn-primary glyphicon glyphicon-pencil', title: 'Edit' %>
+		</div>
+	</div>
 </section>	

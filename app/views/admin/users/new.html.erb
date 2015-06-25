@@ -1,8 +1,8 @@
 <%= javascript_include_tag 'users/validate-form' %>
 
-<h1 class="NewUser-title">New User</h1>
+<h2 class="NewUser-title">New User</h2>
 
-<%= render 'form', user: @user, url: admin_users_path %>
+<%= render 'form', user: @user, url: admin_users_path, name_btn_submit: "Create New User" %>
 
 <%= link_to 'Cancel', admin_users_path %>
 
