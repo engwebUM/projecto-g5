@@ -67,3 +67,5 @@ group :test do
   gem "codeclimate-test-reporter"
 end
 
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
