@@ -1,6 +1,6 @@
-<%= form_tag url, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search], placeholder: "Search by " + search_parameter %>
-    <%= submit_tag "Search", :parameter => nil %>
-  </p>
+<%= form_tag url, :method => 'get', class: 'navbar-form navbar-left' do %>
+  <div class="form-group">
+    <%= text_field_tag :search, params[:search], placeholder: "Search by " + search_parameter, class: "form-control" %>
+  </div>
+  <%= submit_tag "Search", class: "btn btn-default", :parameter => nil %>
 <% end %>
