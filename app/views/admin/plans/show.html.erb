@@ -1,25 +1,31 @@
 <section>
-	<h3>Plan</h3>
-	<p>
-	  <strong>Name:</strong>
-	  <%= @plan.name %>
-	</p>
-	<p>
-	  <strong>Description:</strong>
-	  <%= @plan.description %>
-	</p>
-	<p>
-	  <strong>Price:</strong>
-	  <%= @plan.price %> €
-	</p>
-	<p>
-	  <strong>Discount:</strong>
-	  <%= @plan.discount %> %
-	</p>
-	<p>
-	  <strong>Start time:</strong>
-	  <%= @plan.start_time.strftime("%d/%m/%Y") %>
-	</p>
-	<%= link_to 'Edit', edit_admin_plan_path(@plan) %> |
-	<%= link_to 'Back', admin_plans_path %>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+		  <h4 class="panel-title"> <%= @plan.name %> </h4>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+					<table class="table table-user-information">
+						<tbody>
+							<tr>
+								<td>Description:</td>
+								<td><%= @plan.description %></td>
+							</tr>
+							<tr>
+								<td>Price:</td>
+								<td><%= @plan.price %> €</td>
+							</tr>
+							<tr>
+								<td>Start time:</td>
+								<td><%= @plan.custom_format_date %></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>	
+		</div>	
+		<div class="panel-footer">
+			<%= link_to 'Back', admin_plans_path, class: 'btn btn-default glyphicon glyphicon-chevron-left', title: 'Back' %>
+			<%= link_to '', edit_admin_plan_path(@plan), class: 'btn btn-primary glyphicon glyphicon-pencil', title: 'Edit' %>	
+		</div>
+	</div>
 </section>

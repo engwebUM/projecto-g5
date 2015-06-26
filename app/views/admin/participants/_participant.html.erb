@@ -1,0 +1,97 @@
+<tr>
+  <td><%= participant.name %></td>
+  <td><%= participant.email %></td>
+  <td>
+    <% if participant.checkin? %>
+      <div>
+        <button type="button" class="btn btn-default" disabled="disabled">Checkin</button>
+      </div>
+    <% else %>
+      <div>
+        <%= link_to "Checkin", {:action => "update_checkin", :id => participant.id, :remote => true}, class: "btn btn-info active", id: 'button_checkin', :onclick => 'update_field(this)' %>
+      </div>
+    <% end %>
+  </td>
+  <td>
+    <% if participant.kit? %>
+      <div>
+        <button type="button" class="btn btn-default" disabled="disabled">Yes</button>
+      </div>
+    <% else %>
+      <div>
+        <%= link_to "No ", {:action => "update_kit", :id => participant.id, :remote => true}, class: "btn btn-info active", id: 'button_kit', :onclick => 'update_button_kit(this)' %>
+      </div>
+    <% end %>
+  </td>
+  <td>
+    <% if participant.paid? %>
+      <div>
+        <button type="button" class="btn btn-default" disabled="disabled">Paid</button>
+      </div>
+    <% else %>
+      <div>
+        <%= link_to "Paid", {:action => "update_paid", :id => participant.id, :remote => true}, class: "btn btn-info active", id: 'button_paid', :onclick => 'update_field(this)' %>
+      </div>
+    <% end %>
+  </td>
+  <td>
+    <div>
+      <label>
+        <input type="checkbox" name="credential" onclick="dataSave(this, '<%= participant.name %>', '<%= participant.email %>', '<%= participant.company %>', '<%= participant.twitter %>', '<%= participant.github %>', '<%= participant.id %>')"><br/>
+      </label>
+    </div>  
+  </td>
+  <td>
+    <% if participant.credentials? %>
+      <label>Yes</label>
+    <% else %>
+      <label>No</label>
+    <% end %>
+  </td>
+  <td><%= link_to 'Show', admin_participant_path(participant) %></td>
+  <td><%= link_to 'Edit', edit_admin_participant_path(participant) %></td>
+  <td><%= link_to 'Destroy', admin_participant_path(participant), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
+
+<script language="text/javascript">
+  function toggle(source) {
+    checkboxes = document.getElementsByName('credential');
+    var i = 0;
+    <% @participants.each do |participant| %>
+      checkboxes[i].checked = source.checked;
+      var info = '<%= participant.name %>' + "&" + '<%= participant.email %>' + "&" + '<%= participant.company %>' + "&" + '<%= participant.twitter %>' + "&" + '<%= participant.github %>' + "&" + '<%= participant.id %>';
+      checkboxes[i].value = info;
+      i++;
+    <% end %>
+  }
+
+  function dataSave(checkbox, name, email, company, twitter, github, id) {
+    var info = name + "&" + email + "&" + company + "&" + twitter + "&" + github + "&" + id;
+    checkbox.value = info;
+  }
+
+  function generateCredentials() {
+    var i;
+    var data;
+    var text = "<div class='credential_area'>";
+
+    checkboxes = document.getElementsByName('credential');
+    for(i=0, n=checkboxes.length;i<n;i++) {
+      if (checkboxes[i].checked) {
+        data = checkboxes[i].value.split("&");
+        text += "<div class='background_credential'><div class='double'><div class='name'>"+data[0]+"</div><div class='participant_info'><div class='atributes'>Email: "+data[1]+"</div><div class='atributes'>Company: "+data[2]+"</div><div class='atributes'>Twitter: "+data[3]+"</div><div class='atributes'>Github: "+data[4]+"</div></div></div></div>";
+      }
+    }
+    text += "</div>";  
+    document.getElementById("demo").innerHTML = text;
+  }
+
+  function update_field(el) {
+    el.className = "btn btn-default";
+  }
+
+  function update_button_kit(el) {
+    el.className = "btn btn-default";
+    el.text = "Yes";
+  }
+</script>
