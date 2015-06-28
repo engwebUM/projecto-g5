@@ -18,7 +18,8 @@
                     <label>
                       <input type="checkbox" onClick="selectall(this)"/>Credentials<br/>
                     </label>
-                    <a href="#" alt="Generate Credentials" title="Generate Credentials" type="button" class="btn btn-default icon-generate-creadentials" onclick="generateCredentials()"></a>
+                    <a href="#" alt="Generate Credentials" title="Generate credentials" type="button" class="btn btn-default glyphicon glyphicon-save-file" onclick="generateCredentials()"></a>
+                    <%= link_to "", asset_path("credentials.pdf"), id: "save-credentials", class: "btn btn-default glyphicon glyphicon-floppy-save", alt: "Save credentials for print", title: "Save credentials for print", target: "blank", disabled: true %>
                   </div>
                 </div>
               </th>

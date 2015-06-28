@@ -75,7 +75,8 @@ class Admin::ParticipantsController < ApplicationController
     if params[:participant_ids].present?
       ids = params[:participant_ids]
       create_credentials(Participant.find(ids))
-      render :json => [{ :message => "Credentials generated for choice participants" }]
+      render :json => [{ :message => "Credentials generated for choice participants",
+                          :credentials_path => "credentials.pdf" }]
     else
       create_credentials(Participant.all)
       render :json => [{ :message => "Credentials generated for all participants" }]
@@ -83,7 +84,7 @@ class Admin::ParticipantsController < ApplicationController
   end
 
   def create_credentials(participants)
-    Prawn::Document.generate("app/assets/images/credentials.pdf") do
+    Prawn::Document.generate("public/credentials.pdf") do
       participants.each do |participant|
         participant.update_attribute(:credentials, true)
         text participant.name

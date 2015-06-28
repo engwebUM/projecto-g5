@@ -24,11 +24,12 @@ function selectall(el) {
       traditional: true,
       data: form.serialize(),
       success: function(data){
-        $("<div>" + data[0].message + "</div>").insertBefore("#form-credentials")
-          .delay(3000)
+        $("<div class='alert alert-success'>" + data[0].message + "</div>").insertBefore(".container")
+          .delay(5000)
           .fadeOut(function() {
              $(this).remove(); 
           });
+        $("#save-credentials").removeAttr('disabled');
       }
     });
   }
