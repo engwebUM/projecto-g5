@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'participants/script' %>
 <%= render "shared/search", url: admin_participants_path, search_parameter: "email" %>
 <div class="List">
   <div class="row">
@@ -21,7 +22,6 @@
                   </div>
                 </div>
               </th>
-              <th>Credentials created?</th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -38,43 +38,6 @@
     </div>
   </div>
 </div>
-
-<script type='text/javascript'>
-  function selectall(el) {
-    if(el.checked) {
-      $('input[type="checkbox"]').each(function() {
-          this.checked = true;          
-      });
-    }else{
-      $('input[type="checkbox"]').each(function() {
-          this.checked = false;                       
-      });         
-    }
-  }
-
-  function generateCredentials() {
-    var form = $("#form-credentials");
-    $.ajax({
-      type: "GET",
-      url: "/admin/participants/generate_credentials",
-      dataType: "json",
-      traditional: true,
-      data: form.serialize(),
-      success: function(data){
-        $("<div>" + data[0].message + "</div>").insertBefore("#form-credentials")
-          .delay(3000)
-          .fadeOut(function() {
-             $(this).remove(); 
-          });
-      }
-    });
-  }
-
-  function update_field(el) {
-    el.className = "btn btn-default";
-    el.text = "Yes";
-  }
-</script>
 
 <%= will_paginate @participants, renderer: BootstrapPagination::Rails %>
 

@@ -41,13 +41,6 @@
       </label>
     </div>  
   </td>
-  <td>
-    <% if participant.credentials? %>
-      <label>Yes</label>
-    <% else %>
-      <label>No</label>
-    <% end %>
-  </td>
   <td><%= link_to 'Show', admin_participant_path(participant) %></td>
   <td><%= link_to 'Edit', edit_admin_participant_path(participant) %></td>
   <td><%= link_to 'Destroy', admin_participant_path(participant), method: :delete, data: { confirm: 'Are you sure?' } %></td>

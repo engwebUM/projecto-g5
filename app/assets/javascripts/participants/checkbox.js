@@ -1,8 +1,3 @@
-function setPlanIdForParticipant(inputPlanValueId, dataPlanId){
-	var planId = $("[" + dataPlanId + "]").attr(dataPlanId);
-	$(inputPlanValueId).val(planId);
-}
-
 function selectall(el) {
     if(el.checked) {
       $('input[type="checkbox"]').each(function() {

@@ -27,13 +27,13 @@ plan1 = Plan.create(
 
 plan2 = Plan.create(
         name: "Regular Ticket",
-        price: 150,
+        price: 200,
         start_time: "2015-06-20"
       )
 
 plan3 = Plan.create(
         name: "Late Ticket",
-        price: 150,
+        price: 250,
         start_time: "2015-08-13"
       )
 
