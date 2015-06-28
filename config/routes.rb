@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :users
     resources :plans
     resources :participants
+    resources :prints
+    resources :badges
     get '/', to: 'participants#index'
     get '/participants/update_checkin/:id', to: 'participants#update_checkin', as: 'participant_checkin_update'
     get '/participants/update_kit/:id', to: 'participants#update_kit', as: 'participant_kit_update'
