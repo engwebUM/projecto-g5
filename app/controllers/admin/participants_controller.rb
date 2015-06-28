@@ -1,8 +1,14 @@
+require "prawn"
+
 class Admin::ParticipantsController < ApplicationController
   before_action :authenticate_admin_user!
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
 
   def index
+    Prawn::Document.generate("hello.pdf") do
+  text "Hello World!"
+end
+
     @participants = Participant.search(params[:search]).paginate(page: params[:page], per_page: 10)
   end
 
