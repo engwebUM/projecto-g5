@@ -42,27 +42,10 @@ class Admin::ParticipantsController < ApplicationController
     end
   end
 
-  def update_checkin
+  def update_field
+    field_name = params[:field_name]
     @participant = Participant.find(params[:id])
-    @participant.update_attribute(:checkin, true)
-    render json: [{ message: 'Success' }]
-  end
-
-  def update_kit
-    @participant = Participant.find(params[:id])
-    @participant.update_attribute(:kit, true)
-    render json: [{ message: 'Success' }]
-  end
-
-  def update_paid
-    @participant = Participant.find(params[:id])
-    @participant.update_attribute(:paid, true)
-    render json: [{ message: 'Success' }]
-  end
-
-  def update_credentials
-    @participant = Participant.find(params[:id])
-    @participant.update_attribute(:credentials, true)
+    @participant.update_attribute(field_name, true)
     render json: [{ message: 'Success' }]
   end
 

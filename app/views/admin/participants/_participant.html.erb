@@ -8,7 +8,7 @@
       </div>
     <% else %>
       <div>
-        <%= link_to participant.checkin.humanize, {:action => "update_checkin", :id => participant.id, :remote => true}, class: "btn btn-info", id: 'button_checkin', :onclick => 'update_field(this)' %>
+        <%= link_to participant.checkin.humanize, {:action => "update_field", :field_name => :checkin, :id => participant.id, :remote => true}, class: "btn btn-info", id: 'button_checkin', :onclick => 'update_field(this)' %>
       </div>
     <% end %>
   </td>
@@ -19,7 +19,7 @@
       </div>
     <% else %>
       <div>
-        <%= link_to participant.kit.humanize, {:action => "update_kit", :id => participant.id, :remote => true}, class: "btn btn-info", id: 'button_kit', :onclick => 'update_field(this)' %>
+        <%= link_to participant.kit.humanize, {:action => "update_field", :field_name => :kit, :id => participant.id, :remote => true}, class: "btn btn-info", id: 'button_kit', :onclick => 'update_field(this)' %>
       </div>
     <% end %>
   </td>
@@ -30,7 +30,7 @@
       </div>
     <% else %>
       <div>
-        <%= link_to participant.paid.humanize, {:action => "update_paid", :id => participant.id, :remote => true}, class: "btn btn-info", id: 'button_paid', :onclick => 'update_field(this)' %>
+        <%= link_to participant.paid.humanize, {:action => "update_field", :field_name => :paid, :id => participant.id, :remote => true}, class: "btn btn-info", id: 'button_paid', :onclick => 'update_field(this)' %>
       </div>
     <% end %>
   </td>
