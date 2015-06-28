@@ -11,7 +11,6 @@ class Admin::ParticipantsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.pdf { render pdf: generate_pdf(@participant) }
     end
   end
 
@@ -46,27 +45,55 @@ class Admin::ParticipantsController < ApplicationController
   def update_checkin
     @participant = Participant.find(params[:id])
     @participant.update_attribute(:checkin, true)
+    render json: [{ message: 'Success' }]
   end
 
   def update_kit
     @participant = Participant.find(params[:id])
     @participant.update_attribute(:kit, true)
+    render json: [{ message: 'Success' }]
   end
 
   def update_paid
     @participant = Participant.find(params[:id])
     @participant.update_attribute(:paid, true)
+    render json: [{ message: 'Success' }]
   end
 
   def update_credentials
     @participant = Participant.find(params[:id])
     @participant.update_attribute(:credentials, true)
+    render json: [{ message: 'Success' }]
   end
 
   def destroy
-    Participant.tire.index.remove @participant
     @participant.destroy
     redirect_to admin_participants_path, notice: 'Participant was successfully destroyed.'
+  end
+
+  def generate_credentials
+    if params[:participant_ids].present?
+      ids = params[:participant_ids]
+      create_credentials(Participant.find(ids))
+      render json: [{ message: 'Credentials generated for choice participants',
+                      credentials_path: 'credentials.pdf' }]
+    else
+      create_credentials(Participant.all)
+      render json: [{ message: 'Credentials generated for all participants' }]
+    end
+  end
+
+  def create_credentials(participants)
+    Prawn::Document.generate('public/credentials.pdf', background: 'public/background.jpg') do
+      participants.each do |participant|
+        participant.update_attribute(:credentials, true)
+        move_down 80
+        text participant.name
+        text participant.email
+        text participant.twitter
+        start_new_page unless participant == participants.last
+      end
+    end
   end
 
   private

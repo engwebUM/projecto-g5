@@ -37,6 +37,7 @@ gem 'humanize_boolean'
 gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap'
 gem 'draper'
+gem 'prawn'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -66,6 +67,3 @@ group :test do
   gem 'rspec-rails'
   gem "codeclimate-test-reporter"
 end
-
-gem 'pdfkit'
-gem 'wkhtmltopdf-binary'
