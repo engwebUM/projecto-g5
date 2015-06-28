@@ -90,8 +90,6 @@ class Admin::ParticipantsController < ApplicationController
         move_down 80
         text participant.name
         text participant.email
-        text participant.company
-        text participant.github
         text participant.twitter
         start_new_page unless participant == participants.last
       end
