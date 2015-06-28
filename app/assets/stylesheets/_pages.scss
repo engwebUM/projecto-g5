@@ -16,32 +16,6 @@ body{
 	text-align: center;	
 }
 
-.Homepage-tickets{
-	margin-top: 20px;
-}
-
-.type-tickets .early-bird{
-	width: 350px;
-	margin-left: 10px;	
-}
-
-.early-bird .content, .regular-ticket .content, .late-ticket .content {
-	text-align: center;	
-}
-
-.regular-ticket, .late-ticket{
-	width: 350px;
-	margin-left: 10px;	
-}
-
-.early-bird, .regular-ticket, .late-ticket{
-	display: inline-block;
-	border-style: double;
-	border-width: 5px;
-	border-top-color: #999999;
-	margin-top: 20px;
-}
-
 .inner{
 	margin-top: 2px;
 }
@@ -83,7 +57,7 @@ body{
 
 .navbar-brand, .nav navbar-nav pull-right {
 	display: flex;
-    align-items: center;
+  align-items: center;
 }
 
 .icon-logo{
