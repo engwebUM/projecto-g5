@@ -37,7 +37,7 @@
   <td>
     <div>
       <label>
-        <input type="checkbox" name="credential" onclick="dataSave(this, '<%= participant.name %>', '<%= participant.email %>', '<%= participant.company %>', '<%= participant.twitter %>', '<%= participant.github %>', '<%= participant.id %>')"><br/>
+        <%= check_box_tag "participant_ids[]", participant.id %><br/>
       </label>
     </div>  
   </td>

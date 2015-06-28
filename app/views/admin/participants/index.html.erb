@@ -2,88 +2,72 @@
 <div class="List">
   <div class="row">
     <div class="column">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Checkin Done?</th>
-            <th>Kit deliveried?</th>
-            <th>Paid?</th>
-            <th>
-              <div>
+      <%= form_for generate_credentials_admin_participants_path, :html => {:id => "form-credentials"}, method: :get do %>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Checkin Done?</th>
+              <th>Kit deliveried?</th>
+              <th>Paid?</th>
+              <th>
                 <div>
-                  <label>
-                    <input type="checkbox" onClick="toggle(this)"/>Credentials<br/>
-                  </label>
-                  <a href="#" alt="Generate Credentials" title="Generate Credentials" type="button" class="btn btn-default icon-generate-creadentials" onclick="generateCredentials()"></a>
+                  <div>
+                    <label>
+                      <input type="checkbox" onClick="selectall(this)"/>Credentials<br/>
+                    </label>
+                    <a href="#" alt="Generate Credentials" title="Generate Credentials" type="button" class="btn btn-default icon-generate-creadentials" onclick="generateCredentials()"></a>
+                  </div>
                 </div>
-              </div>
-            </th>
-            <th>Credentials created?</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= render @participants %>
-        </tbody>
-      </table>
+              </th>
+              <th>Credentials created?</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @participants %>
+          </tbody>
+        </table>
+        
+      <% end %>
       <p>
         <%= link_to '', new_admin_participant_path, class: "btn btn-success glyphicon glyphicon-plus", title: 'New participant' %>
       <p>
-        <div>
-
-          <p id="demo"></p>
-          
-        </div>
       </p>
     </div>
   </div>
 </div>
 
 <script type='text/javascript'>
-  function toggle(source) {
-    checkboxes = document.getElementsByName('credential');
-    var i = 0;
-    <% @participants.each do |participant| %>
-      checkboxes[i].checked = source.checked;
-      var info = '<%= participant.name %>' + "&" + '<%= participant.email %>' + "&" + '<%= participant.company %>' + "&" + '<%= participant.twitter %>' + "&" + '<%= participant.github %>' + "&" + '<%= participant.id %>';
-      checkboxes[i].value = info;
-      i++;
-    <% end %>
-  }
-
-  function dataSave(checkbox, name, email, company, twitter, github, id) {
-    var info = name + "&" + email + "&" + company + "&" + twitter + "&" + github + "&" + id;
-    checkbox.value = info;
+  function selectall(el) {
+    if(el.checked) {
+      $('input[type="checkbox"]').each(function() {
+          this.checked = true;          
+      });
+    }else{
+      $('input[type="checkbox"]').each(function() {
+          this.checked = false;                       
+      });         
+    }
   }
 
   function generateCredentials() {
-    var i;
-    var data;
-    var text = "<div class='credential_area'>";
-
-    checkboxes = document.getElementsByName('credential');
-    for(i=0, n=checkboxes.length;i<n;i++) {
-      if (checkboxes[i].checked) {
-        /*
-          checkboxes[i].value = "name&mail&company&twitter&github&id"
-        */
-        data = checkboxes[i].value.split("&");
-        text += "<div class='background_credential'><div class='double'><div class='name'>"+data[0]+"</div><div class='participant_info'><div class='atributes'>Email: "+data[1]+"</div><div class='atributes'>Company: "+data[2]+"</div><div class='atributes'>Twitter: "+data[3]+"</div><div class='atributes'>Github: "+data[4]+"</div></div></div></div>";
-
-        /*
-          a ideia era atraves do id do respetivo participante, guardado em data[5], alterar o valor do campo Credentials na base de dados.
-        */
-
-        //{:action => "update_credentials", :id => data[5], :remote => true}
-        //'/participants/update_credentials/:data[5]'
-        // redirect_to( :action=>'update_credentials' ) 
-        
+    var form = $("#form-credentials");
+    $.ajax({
+      type: "GET",
+      url: "/admin/participants/generate_credentials",
+      dataType: "json",
+      traditional: true,
+      data: form.serialize(),
+      success: function(data){
+        $("<div>" + data[0].message + "</div>").insertBefore("#form-credentials")
+          .delay(3000)
+          .fadeOut(function() {
+             $(this).remove(); 
+          });
       }
-    }
-    text += "</div>";  
-    document.getElementById("demo").innerHTML = text;
+    });
   }
 
   function update_field(el) {

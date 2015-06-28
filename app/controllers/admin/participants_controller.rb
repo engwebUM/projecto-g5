@@ -1,14 +1,8 @@
-require "prawn"
-
 class Admin::ParticipantsController < ApplicationController
   before_action :authenticate_admin_user!
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
 
   def index
-    Prawn::Document.generate("hello.pdf") do
-  text "Hello World!"
-end
-
     @participants = Participant.search(params[:search]).paginate(page: params[:page], per_page: 10)
   end
 
@@ -17,7 +11,6 @@ end
 
     respond_to do |format|
       format.html
-      format.pdf { render pdf: generate_pdf(@participant) }
     end
   end
 
@@ -52,27 +45,50 @@ end
   def update_checkin
     @participant = Participant.find(params[:id])
     @participant.update_attribute(:checkin, true)
+    render :json => [{ :message => "Success" }]
   end
 
   def update_kit
     @participant = Participant.find(params[:id])
     @participant.update_attribute(:kit, true)
+    render :json => [{ :message => "Success" }]
   end
 
   def update_paid
     @participant = Participant.find(params[:id])
     @participant.update_attribute(:paid, true)
+    render :json => [{ :message => "Success" }]
   end
 
   def update_credentials
     @participant = Participant.find(params[:id])
     @participant.update_attribute(:credentials, true)
+    render :json => [{ :message => "Success" }]
   end
 
   def destroy
     Participant.tire.index.remove @participant
     @participant.destroy
     redirect_to admin_participants_path, notice: 'Participant was successfully destroyed.'
+  end
+
+  def generate_credentials
+    if params[:participant_ids].present?
+      ids = params[:participant_ids]
+      Prawn::Document.generate("app/assets/images/credentials.pdf") do
+        Participant.find(ids).each do |participant|
+          text participant.name
+        end
+      end
+      render :json => [{ :message => "Credentials generated for choice participants" }]
+    else
+      Prawn::Document.generate("app/assets/images/credentials.pdf") do
+        Participant.all.each do |participant|
+          text participant.name
+        end
+      end
+      render :json => [{ :message => "Credentials generated for all participants" }]
+    end
   end
 
   private
